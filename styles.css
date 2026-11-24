@@ -371,7 +371,7 @@ dialog::backdrop{ background:rgba(3,7,11,.62); backdrop-filter:blur(3px); }
   .layout{ flex-direction:column; }
   .stage{ flex:1 1 auto; min-height:0; }
   .panel{
-    width:auto; flex:0 0 auto; height:42dvh; min-height:180px;
+    width:auto; flex:0 0 auto; height:38dvh; min-height:160px;
     border-left:0; border-top:1px solid var(--line);
     padding-bottom:env(safe-area-inset-bottom);
   }
