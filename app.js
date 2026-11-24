@@ -49,13 +49,13 @@
 
   const DEFAULT_LIBRARY = [
     // --- 수정 님 텐트 7종 (실제 규격) ---
-    { id: 'tent-yakdome450', name: '야크돔 450', maker: '위오', cat: '텐트', w: 440, d: 460, hgt: 210, guy: 50, shape: 'round', color: '#ab8557', door: 'front', memo: '돔형' },
-    { id: 'tent-modelv', name: '위켄트립 모델V', maker: '', cat: '텐트', w: 350, d: 625, hgt: 225, guy: 80, shape: 'rect', color: '#d2c7b2', door: 'front', memo: '터널형' },
-    { id: 'tent-timaxex', name: '제드 티맥스 EX', maker: '', cat: '텐트', w: 400, d: 680, hgt: 225, guy: 100, shape: 'rect', color: '#ded6c5', door: 'front', memo: '대형 터널형' },
+    { id: 'tent-yakdome450', name: '야크돔 450', maker: '위오', cat: '텐트', w: 440, d: 460, hgt: 210, guy: 50, shape: 'round', color: '#6d5546', door: 'front', memo: '돔형' },
+    { id: 'tent-modelv', name: '위켄트립 모델V', maker: '', cat: '텐트', w: 350, d: 625, hgt: 225, guy: 80, shape: 'rect', color: '#26292e', door: 'front', memo: '터널형' },
+    { id: 'tent-timaxex', name: '제드 티맥스 EX', maker: '', cat: '텐트', w: 400, d: 680, hgt: 225, guy: 100, shape: 'rect', color: '#ded7c9', door: 'front', memo: '대형 터널형' },
     { id: 'tent-raummini', name: '트레블첵 라움 미니', maker: '', cat: '텐트', w: 200, d: 260, hgt: 130, guy: 40, shape: 'rect', color: '#d3a3a0', door: 'front', memo: '사각 돔' },
-    { id: 'tent-poler2', name: '폴러 투맨', maker: '', cat: '텐트', w: 152, d: 216, hgt: 102, guy: 40, shape: 'rect', color: '#c96a3f', door: 'front', memo: '경량 돔' },
-    { id: 'tent-village5', name: '네이처하이크 빌리지 5.0', maker: '', cat: '텐트', w: 210, d: 470, hgt: 190, guy: 60, shape: 'rect', color: '#d6c7ab', door: 'front', memo: '로지형' },
-    { id: 'tent-geoair4', name: '지오에어 4', maker: '디얼스', cat: '텐트', w: 230, d: 300, hgt: 190, guy: 60, shape: 'rect', color: '#9c968c', door: 'front', memo: '에어텐트' },
+    { id: 'tent-poler2', name: '폴러 투맨', maker: '', cat: '텐트', w: 152, d: 216, hgt: 102, guy: 40, shape: 'rect', color: '#67714f', door: 'front', memo: '경량 돔' },
+    { id: 'tent-village5', name: '네이처하이크 빌리지 5.0', maker: '', cat: '텐트', w: 210, d: 470, hgt: 190, guy: 60, shape: 'rect', color: '#c2a273', door: 'front', memo: '로지형' },
+    { id: 'tent-geoair4', name: '지오에어 4', maker: '디얼스', cat: '텐트', w: 230, d: 300, hgt: 190, guy: 60, shape: 'rect', color: '#22252a', door: 'front', memo: '에어텐트' },
     // --- 타프 ---
     { id: 'tarp-recta440', name: '렉타 타프 440', maker: '', cat: '타프', w: 440, d: 440, hgt: 0, guy: 60, shape: 'rect', color: '#bda484', door: 'none', memo: '렉타' },
     { id: 'tarp-hexa', name: '헥사 타프 500×420', maker: '', cat: '타프', w: 500, d: 420, hgt: 0, guy: 70, shape: 'hex', color: '#6d6b5c', door: 'none', memo: '헥사' },
@@ -718,13 +718,13 @@
   /* ==================== 텐트 제품별 대표 색·구조 (2D·3D 공용) ==================== */
   /* 실제 제품의 대표 색과 부품 색. 이름으로 제품을 알아내고, 모르는 텐트는 종류별 기본값. */
   const TENT_LOOKS = {
-    village: { body: '#d6c7ab', fly: '#3a3e44', pole: '#2b2f34', mesh: '#22262b' },
-    yakdome: { body: '#ab8557', fly: '#9d7850', pole: '#3d4238', mesh: '#26241f' },
-    modelv: { body: '#d2c7b2', fly: '#c2b7a0', pole: '#6a6357', mesh: '#24282c' },
-    timax: { body: '#ded6c5', fly: '#c7beab', pole: '#565b62', mesh: '#23272c' },
-    raum: { body: '#d3a3a0', fly: '#c89492', pole: '#5a4f4c', mesh: '#2a2624' },
-    poler: { body: '#c96a3f', fly: '#b85f37', pole: '#4a4640', mesh: '#2b2622' },
-    geoair: { body: '#9c968c', fly: '#aaa49b', pole: '#4d4a45', mesh: '#23262a' }
+    village: { body: '#c2a273', panel: '#cdb089', roof: '#c9a878', trim: '#4a4b3c', skirt: '#3f4134', pole: '#2b2d2a', mesh: '#1b1e20' },
+    yakdome: { body: '#6d5546', panel: '#a98a6b', roof: '#6d5546', trim: '#141414', skirt: '#121212', pole: '#141414', mesh: '#171512' },
+    modelv: { body: '#26292e', panel: '#2c3036', roof: '#202328', trim: '#111317', skirt: '#0e1013', pole: '#121417', mesh: '#0b0d10' },
+    timax: { body: '#ded7c9', panel: '#e7e1d5', roof: '#ded7c9', trim: '#8d8797', skirt: '#6f6b7a', pole: '#3a3d42', mesh: '#1d2126' },
+    raum: { body: '#d3a3a0', panel: '#c08e8b', roof: '#cb9a97', trim: '#5a4f4c', skirt: '#3e3a38', pole: '#3a3533', mesh: '#221f1e' },
+    poler: { body: '#67714f', panel: '#727c58', roof: '#67714f', trim: '#22251f', skirt: '#16181a', pole: '#3b3f36', mesh: '#1a1d18', accent: '#e2622a' },
+    geoair: { body: '#22252a', panel: '#2a2e34', roof: '#1b1e22', trim: '#0e1013', skirt: '#0c0e11', pole: '#3a3f45', mesh: '#8d958f' }
   };
   function tentLookOf(it) {
     const n = ((it && it.name) || '') + ' ' + ((it && it.memo) || '');
@@ -744,11 +744,12 @@
   }
 
   /* 이전 기본 팔레트(민트·보라 등)로 저장된 텐트·타프 색을 실제 제품색으로 옮깁니다. */
-  const PALETTE_V = 2;
+  const PALETTE_V = 3;
+  /* v2 기본색(제품색 1차) → v3 실제 사진에서 뽑은 색 */
   const OLD_TENT_COLORS = {
-    'tent-yakdome450': '#4f8df7', 'tent-modelv': '#3ecf8e', 'tent-timaxex': '#f5a24b',
-    'tent-raummini': '#b07cf5', 'tent-poler2': '#f25f6a', 'tent-village5': '#2fc7c0',
-    'tent-geoair4': '#e879c0', 'tarp-recta440': '#9dc45a', 'tarp-hexa': '#6fa8c9'
+    'tent-yakdome450': '#ab8557', 'tent-modelv': '#d2c7b2', 'tent-timaxex': '#ded6c5',
+    'tent-raummini': '#d3a3a0', 'tent-poler2': '#c96a3f', 'tent-village5': '#d6c7ab',
+    'tent-geoair4': '#9c968c'
   };
   function migratePalette(list) {
     (list || []).forEach((e) => {
@@ -921,202 +922,228 @@
     g.restore();
   }
 
-  /* ==================== 2D 평면 — 제품별 폴대·창문·캐노피 ==================== */
+  /* ==================== 2D 평면 — 제품 사진의 폴대·창문·어닝 ==================== */
   function detailTentLook(g, it, w, d, lw, look) {
     const hw = w / 2, hd = d / 2;
     const spec = TENT_LOOKS[look];
     const body = /^#[0-9a-f]{6}$/i.test(it.color || '') ? it.color : spec.body;
-    const flyC = withA(spec.fly, 0.95);
-    const flyLit = withA(tintHex(spec.fly, 0.18), 0.95);
-    const poleC = withA(spec.pole, 0.9);
-    const meshC = 'rgba(18,22,27,.82)';
-    const seamC = 'rgba(255,255,255,.3)';
-    const thin = Math.max(0.8, lw * 0.7);
-    const mid = Math.max(1, lw * 0.95);
+    const frameC = withA(spec.panel || tintHex(spec.body, 0.16), 0.95);
+    const poleC = withA(spec.pole || '#2b2f34', 0.92);
+    const trimC = withA(spec.trim || shade(spec.body, -0.45), 0.92);
+    const meshC = 'rgba(20,25,30,.88)';
+    const seam = 'rgba(255,255,255,.28)';
+    const thin = Math.max(0.8, lw * 0.7), mid = Math.max(1, lw * 0.95);
+    const line = (x1, y1, x2, y2, c, lwd) => {
+      g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2, y2);
+      g.strokeStyle = c; g.lineWidth = lwd; g.stroke();
+    };
+    const meshWin = (x, y, ww, hh, r) => {
+      g.beginPath(); rrPath(g, x - ww / 2 - 1.2, y - hh / 2 - 1.2, ww + 2.4, hh + 2.4, (r || 2) + 1.2);
+      g.fillStyle = 'rgba(255,255,255,.34)'; g.fill();
+      g.beginPath(); rrPath(g, x - ww / 2, y - hh / 2, ww, hh, r || 2);
+      g.fillStyle = meshC; g.fill();
+    };
+    const ring = (rx, ry, c, lwd, rot) => {
+      g.save(); g.rotate(rot || 0);
+      g.beginPath(); g.ellipse(0, 0, Math.max(1, rx), Math.max(1, ry), 0, 0, TAU);
+      g.strokeStyle = c; g.lineWidth = lwd; g.stroke();
+      g.restore();
+    };
 
-    // 바닥 그림자 느낌(가장자리 어둡게)
-    const edge = g.createLinearGradient(0, -hd, 0, hd);
-    edge.addColorStop(0, 'rgba(255,255,255,.16)');
-    edge.addColorStop(0.5, 'rgba(255,255,255,.02)');
-    edge.addColorStop(1, 'rgba(0,0,0,.2)');
-    g.fillStyle = edge;
-    g.fillRect(-hw, -hd, w, d);
+    // 바닥면 음영 (앞이 밝고 뒤가 어둡게)
+    const grad = g.createLinearGradient(0, -hd, 0, hd);
+    grad.addColorStop(0, 'rgba(255,255,255,.20)');
+    grad.addColorStop(0.5, 'rgba(255,255,255,.04)');
+    grad.addColorStop(1, 'rgba(0,0,0,.20)');
+    g.fillStyle = grad; g.fillRect(-hw, -hd, w, d);
     g.lineCap = 'round';
 
-    const ellipseArc = (rx, ry, rot, color, lwid) => {
-      g.save(); g.rotate(rot);
-      g.beginPath(); g.ellipse(0, 0, Math.max(1, rx), Math.max(1, ry), 0, 0, TAU);
-      g.strokeStyle = color; g.lineWidth = lwid; g.stroke();
-      g.restore();
-    };
-    const win = (x, y, ww, hh, rot) => {
-      g.save();
-      if (rot) g.rotate(rot);
-      g.fillStyle = 'rgba(255,255,255,.5)';
-      g.beginPath(); rrPath(g, x - ww / 2 - 1.2, y - hh / 2 - 1.2, ww + 2.4, hh + 2.4, 2); g.fill();
-      g.fillStyle = meshC;
-      g.beginPath(); rrPath(g, x - ww / 2, y - hh / 2, ww, hh, 1.6); g.fill();
-      g.restore();
-    };
-    const doorPanel = (x, y, ww, hh, side) => {
-      // side: 'f' 앞(-y), 'b' 뒤(+y), 'l', 'r'
-      const rot = side === 'l' ? -Math.PI / 2 : side === 'r' ? Math.PI / 2 : 0;
-      const px = side === 'l' ? -hw + 2 : side === 'r' ? hw - 2 : x;
-      const py = side === 'f' ? -hd + 2 : side === 'b' ? hd - 2 : y;
-      g.save();
-      g.translate(px, py); g.rotate(rot);
-      const yy = side === 'f' ? hh / 2 - 2 : side === 'b' ? -hh / 2 + 2 : 0;
-      g.fillStyle = 'rgba(10,14,19,.5)';
-      g.beginPath(); rrPath(g, -ww / 2, yy - hh / 2, ww, hh, 3); g.fill();
-      g.strokeStyle = 'rgba(255,255,255,.55)'; g.lineWidth = Math.max(1, lw * 0.8); g.stroke();
-      // 지퍼
-      g.setLineDash([Math.max(2, lw * 1.8), Math.max(1.5, lw * 1.4)]);
-      g.strokeStyle = 'rgba(255,255,255,.7)';
-      g.beginPath(); g.moveTo(0, yy - hh / 2 + 1); g.lineTo(0, yy + hh / 2 - 1); g.stroke();
-      g.setLineDash([]);
-      g.restore();
-    };
-
     if (look === 'village') {
-      // 어두운 플라이(지붕) — 폭을 덮고 양옆에 베이지 자락
-      g.fillStyle = flyC;
-      g.beginPath(); rrPath(g, -hw * 0.87, -hd * 0.985, w * 0.87, d * 0.97, Math.min(w, d) * 0.1); g.fill();
-      // 능선
-      g.strokeStyle = flyLit; g.lineWidth = Math.max(1.4, lw * 1.3);
-      g.beginPath(); g.moveTo(0, -hd * 0.97); g.lineTo(0, hd * 0.97); g.stroke();
-      g.strokeStyle = 'rgba(0,0,0,.35)'; g.lineWidth = thin;
-      [-0.42, 0.42].forEach((k) => { g.beginPath(); g.moveTo(hw * k, -hd * 0.96); g.lineTo(hw * k, hd * 0.96); g.stroke(); });
-      // 옆면 메쉬 창 (양쪽 2개)
+      // 오두막 — 용마루가 길이 방향, 지붕면 이음선, 앞 베란다
+      const porch = d * 0.26;
+      line(0, -hd, 0, hd, trimC, mid * 1.6);                      // 용마룻줄
+      [-0.55, 0.55].forEach((k) => line(hw * k, -hd, hw * k, hd, seam, thin));
+      [-1, 1].forEach((sx) => line(sx * hw * 0.99, -hd, sx * hw * 0.99, hd, trimC, mid));  // 처마
+      // 앞 베란다 경계
+      line(-hw * 0.99, -hd + porch, hw * 0.99, -hd + porch, seam, mid);
+      g.fillStyle = 'rgba(255,255,255,.06)';
+      g.fillRect(-hw * 0.99, -hd + porch, w * 0.99, porch);
+      // 옆면 아치 메쉬창 2개씩
       [-1, 1].forEach((sx) => {
-        win(sx * hw * 0.84, -hd * 0.26, Math.max(2.6, w * 0.075), d * 0.24, 0);
-        win(sx * hw * 0.84, hd * 0.16, Math.max(2.6, w * 0.075), d * 0.22, 0);
+        meshWin(sx * hw * 0.88, -hd + porch + d * 0.1, Math.max(3, w * 0.1), d * 0.16, 1);
+        meshWin(sx * hw * 0.88, -hd + porch + d * 0.34, Math.max(3, w * 0.1), d * 0.13, 1);
       });
-      // 앞 출입문 + 뒤 창
-      doorPanel(0, 0, w * 0.44, d * 0.06, 'f');
-      win(0, hd * 0.94, w * 0.36, Math.max(2.5, d * 0.05), 0);
-      // 캐노피는 바깥쪽에 따로 (drawTentAwning2)
+      // 앞면 — 출입문(왼쪽) + 격자 창(오른쪽)
+      g.fillStyle = meshC;
+      g.beginPath(); rrPath(g, -hw * 0.62, -hd + 1.5, w * 0.36, Math.max(2.4, d * 0.035), 1.5); g.fill();
+      g.strokeStyle = frameC; g.lineWidth = thin; g.stroke();
+      const wx = hw * 0.3, ww = w * 0.36;
+      g.fillStyle = meshC;
+      g.beginPath(); rrPath(g, wx - ww / 2, -hd + 1.5, ww, Math.max(2.4, d * 0.03), 1.5); g.fill();
+      g.strokeStyle = frameC; g.lineWidth = thin; g.stroke();
+      [-0.3, 0, 0.3].forEach((k) => line(wx + ww * k, -hd + 1.5, wx + ww * k, -hd + 1.5 + Math.max(2.4, d * 0.03), frameC, thin));
+      // 뒤 창
+      meshWin(0, hd * 0.94, w * 0.3, Math.max(2.4, d * 0.03), 1);
+      // 바닥 자락
+      g.strokeStyle = withA(spec.skirt || shade(spec.body, -0.6), 0.85); g.lineWidth = Math.max(1.4, lw * 1.2);
+      g.beginPath(); rrPath(g, -hw * 0.99, -hd * 0.99, w * 0.99, d * 0.99, Math.min(w, d) * 0.02); g.stroke();
     } else if (look === 'yakdome') {
-      // 지오데식 돔 — 3개의 교차 폴대
-      ellipseArc(hw * 0.99, hd * 0.99, 0, poleC, mid);
-      ellipseArc(hw * 0.99, hd * 0.99, Math.PI / 3, poleC, mid);
-      ellipseArc(hw * 0.99, hd * 0.99, -Math.PI / 3, poleC, mid);
-      ellipseArc(hw * 0.72, hd * 0.72, 0, 'rgba(255,255,255,.2)', thin);
-      // 스커트
-      g.strokeStyle = withA(spec.fly, 0.9); g.lineWidth = Math.max(1.2, lw * 1.1);
-      g.beginPath(); rrPath(g, -hw * 0.93, -hd * 0.93, w * 0.86, d * 0.86, Math.min(w, d) * 0.42); g.stroke();
-      // 환기캡
-      g.beginPath(); g.arc(0, 0, Math.max(2, Math.min(w, d) * 0.06), 0, TAU);
-      g.fillStyle = withA(spec.fly, 0.9); g.fill();
-      // 앞 현관 + 문
-      g.fillStyle = withA(spec.fly, 0.9);
-      g.beginPath(); rrPath(g, -hw * 0.28, -hd * 1.0, w * 0.28, d * 0.12, 2); g.fill();
-      doorPanel(0, 0, w * 0.36, d * 0.08, 'f');
-    } else if (look === 'modelv' || look === 'timax' || look === 'geoair') {
-      const beams = look === 'modelv' ? 4 : look === 'timax' ? 5 : 3;
-      const thick = look === 'geoair';
-      if (look === 'timax') {
-        g.fillStyle = withA(spec.fly, 0.5);
-        g.beginPath(); rrPath(g, -hw * 0.9, -hd * 0.96, w * 0.9, d * 0.92, Math.min(w, d) * 0.2); g.fill();
+      // 지오데식 돔 — 각진 다면체 링 + 검정 폴대 6개 + 삼각 환기창
+      g.beginPath();
+      for (let i = 0; i < 12; i++) {
+        const a = -Math.PI / 2 + (i / 12) * TAU;
+        const x = Math.cos(a) * hw * 0.99, y = Math.sin(a) * hd * 0.99;
+        if (i === 0) g.moveTo(x, y); else g.lineTo(x, y);
       }
-      // 길이 방향 능선
-      g.strokeStyle = look === 'geoair' ? withA(tintHex(body, 0.3), 0.8) : seamC;
-      g.lineWidth = thick ? Math.max(2.4, lw * 2.2) : Math.max(1, lw * 0.8);
-      g.beginPath(); g.moveTo(0, -hd * 0.97); g.lineTo(0, hd * 0.97); g.stroke();
-      // 아치 폴대·에어빔
-      for (let i = 0; i < beams; i++) {
-        const y = -hd + (d * (i + 0.5)) / beams;
+      g.closePath();
+      g.fillStyle = withA(body, 0.18); g.fill();
+      [0.99, 0.86, 0.64].forEach((k, i) => {
         g.beginPath();
-        g.moveTo(-hw * 0.985, y);
-        g.quadraticCurveTo(0, y + Math.min(w, d) * 0.045, hw * 0.985, y);
-        g.strokeStyle = thick ? withA(tintHex(body, 0.22), 0.95) : poleC;
-        g.lineWidth = thick ? Math.max(3, Math.min(w, d) * 0.05) : Math.max(1.2, lw * 1.05);
-        g.stroke();
-        if (thick) {
-          g.strokeStyle = 'rgba(255,255,255,.22)'; g.lineWidth = thin;
-          g.beginPath();
-          g.moveTo(-hw * 0.97, y - Math.min(w, d) * 0.012);
-          g.quadraticCurveTo(0, y + Math.min(w, d) * 0.033, hw * 0.97, y - Math.min(w, d) * 0.012);
-          g.stroke();
+        for (let j = 0; j < 12; j++) {
+          const a = -Math.PI / 2 + (j / 12) * TAU;
+          const x = Math.cos(a) * hw * k, y = Math.sin(a) * hd * k;
+          if (j === 0) g.moveTo(x, y); else g.lineTo(x, y);
         }
+        g.closePath(); g.strokeStyle = i === 0 ? trimC : seam; g.lineWidth = i === 0 ? mid * 2 : thin; g.stroke();
+      });
+      // 폴대 6개 — 중심에서 바깥으로
+      for (let i = 0; i < 6; i++) {
+        const a = -Math.PI / 2 + (i / 6) * TAU;
+        line(0, 0, Math.cos(a) * hw * 0.995, Math.sin(a) * hd * 0.995, poleC, mid * 1.2);
       }
-      // 옆면 큰 창
-      const nWin = look === 'timax' ? 3 : 2;
-      [-1, 1].forEach((sx) => {
-        for (let i = 0; i < nWin; i++) {
-          const y = -hd * 0.55 + (d * 0.72 * i) / Math.max(1, nWin - 1);
-          win(sx * hw * 0.82, nWin === 1 ? 0 : y, Math.max(3, w * 0.085), d * 0.15, 0);
-        }
+      // 꼭대기 삼각 환기창 3개
+      [Math.PI * 0.15, Math.PI * 0.82, Math.PI * 1.48].forEach((th) => {
+        g.beginPath();
+        g.moveTo(Math.cos(th - 0.5) * hw * 0.62, Math.sin(th - 0.5) * hd * 0.62);
+        g.lineTo(Math.cos(th + 0.5) * hw * 0.62, Math.sin(th + 0.5) * hd * 0.62);
+        g.lineTo(Math.cos(th) * hw * 0.18, Math.sin(th) * hd * 0.18);
+        g.closePath(); g.fillStyle = meshC; g.fill();
+        g.strokeStyle = poleC; g.lineWidth = thin; g.stroke();
       });
-      doorPanel(0, 0, w * 0.5, d * 0.07, 'f');
-      win(0, hd * 0.95, w * 0.3, Math.max(2.5, d * 0.045), 0);
-    } else if (look === 'raum') {
-      // 면 자립형 돔 — X 폴대
-      ellipseArc(hw * 0.985, hd * 0.985, Math.PI / 4, poleC, mid);
-      ellipseArc(hw * 0.985, hd * 0.985, -Math.PI / 4, poleC, mid);
-      // 그라운드시트 테두리
-      g.strokeStyle = withA(spec.fly, 0.9);
-      g.lineWidth = Math.max(2, Math.min(w, d) * 0.035);
-      g.beginPath(); rrPath(g, -hw * 0.96, -hd * 0.96, w * 0.92, d * 0.92, Math.min(w, d) * 0.3); g.stroke();
-      g.setLineDash([Math.max(3, lw * 2.4), Math.max(2, lw * 1.8)]);
-      g.strokeStyle = 'rgba(255,255,255,.35)'; g.lineWidth = thin;
-      g.beginPath(); rrPath(g, -hw * 0.78, -hd * 0.8, w * 0.56, d * 0.6, Math.min(w, d) * 0.2); g.stroke();
-      g.setLineDash([]);
-      doorPanel(0, 0, w * 0.42, d * 0.07, 'f');
-      doorPanel(0, 0, w * 0.34, d * 0.05, 'b');
-      win(-hw * 0.9, 0, Math.max(2.5, w * 0.07), d * 0.22, 0);
-      win(hw * 0.9, 0, Math.max(2.5, w * 0.07), d * 0.22, 0);
-    } else {
-      // poler — 컴팩트 돔
-      ellipseArc(hw * 0.985, hd * 0.985, Math.PI / 2, poleC, mid);
-      ellipseArc(hw * 0.985, hd * 0.985, 0, poleC, mid);
-      g.strokeStyle = withA(spec.fly, 0.85); g.lineWidth = Math.max(1.4, lw * 1.2);
-      g.beginPath(); rrPath(g, -hw * 0.94, -hd * 0.94, w * 0.88, d * 0.88, Math.min(w, d) * 0.42); g.stroke();
-      // 앞 큰 둥근 문
-      g.fillStyle = 'rgba(10,14,19,.55)';
-      g.beginPath(); g.ellipse(0, -hd * 0.8, w * 0.26, d * 0.11, 0, 0, TAU); g.fill();
-      g.strokeStyle = 'rgba(255,255,255,.55)'; g.lineWidth = Math.max(1, lw * 0.8); g.stroke();
-      // 옆 둥근 창
-      [-1, 1].forEach((sx) => {
-        g.beginPath(); g.ellipse(sx * hw * 0.62, -hd * 0.16, Math.min(w, d) * 0.06, Math.min(w, d) * 0.06, 0, 0, TAU);
-        g.fillStyle = meshC; g.fill();
-        g.strokeStyle = 'rgba(255,255,255,.45)'; g.lineWidth = thin; g.stroke();
+      // 앞 출입문
+      g.beginPath(); rrPath(g, -hw * 0.5, -hd * 0.99 + 1, w * 0.3, Math.max(2.6, d * 0.03), 1.5);
+      g.fillStyle = meshC; g.fill(); g.strokeStyle = frameC; g.lineWidth = thin; g.stroke();
+    } else if (look === 'modelv') {
+      // 올블랙 V자 사면 에어텐트 — 양 끝 사면과 V 에어기둥, 지붕 환기창
+      const endD = d * 0.16;
+      [-1, 1].forEach((sy) => {
+        line(-hw * 0.99, sy * (hd - endD), hw * 0.99, sy * (hd - endD), seam, mid);
+        // V자 에어기둥
+        line(0, sy * (hd - endD * 0.2), -hw * 0.9, sy * hd * 0.99, poleC, mid * 1.7);
+        line(0, sy * (hd - endD * 0.2), hw * 0.9, sy * hd * 0.99, poleC, mid * 1.7);
       });
-      // 뒤 환기
-      g.beginPath(); g.ellipse(0, hd * 0.86, w * 0.16, d * 0.06, 0, 0, TAU);
+      line(0, -hd + endD, 0, hd - endD, seam, thin);
+      // 옆면 큰 아치 창 + 작은 창
+      [-1, 1].forEach((sx) => {
+        meshWin(sx * hw * 0.84, -d * 0.01, Math.max(3, w * 0.12), d * 0.2, 2);
+        meshWin(sx * hw * 0.84, d * 0.27, Math.max(3, w * 0.1), d * 0.12, 2);
+      });
+      // 지붕 중앙 메쉬 환기창
+      g.beginPath(); rrPath(g, -hw * 0.26, -d * 0.11, hw * 0.52, d * 0.22, 3);
       g.fillStyle = meshC; g.fill();
+      g.strokeStyle = poleC; g.lineWidth = thin; g.stroke();
+      // 바닥 자락
+      g.strokeStyle = withA(spec.skirt || shade(spec.body, -0.6), 0.9); g.lineWidth = mid * 2;
+      g.beginPath(); rrPath(g, -hw * 0.99, -hd * 0.99, w * 0.99, d * 0.99, Math.min(w, d) * 0.12); g.stroke();
+    } else if (look === 'timax') {
+      // 크림색 3룸 터널 — 아치 프레임 5개, 옆 큰 아치창 3개
+      const nA = 5;
+      for (let i = 0; i < nA; i++) {
+        const y = -hd + (d * (i + 0.5)) / nA;
+        line(-hw * 0.985, y, hw * 0.985, y, poleC, mid * 1.1);
+      }
+      [-1, 1].forEach((sx) => {
+        [-0.3, 0, 0.3].forEach((fz) => {
+          meshWin(sx * hw * 0.86, fz * d, Math.max(3, w * 0.13), d * 0.18, 4);
+        });
+      });
+      // 앞 출입문 · 뒤 창
+      g.beginPath(); rrPath(g, -hw * 0.28, -hd + 1.2, hw * 0.56, Math.max(2.6, d * 0.03), 3);
+      g.fillStyle = meshC; g.fill(); g.strokeStyle = frameC; g.lineWidth = thin; g.stroke();
+      meshWin(0, hd * 0.95, w * 0.3, Math.max(2.2, d * 0.025), 2);
+      g.strokeStyle = withA(spec.trim, 0.9); g.lineWidth = Math.max(1.4, lw * 1.3);
+      g.beginPath(); rrPath(g, -hw * 0.99, -hd * 0.99, w * 0.99, d * 0.99, Math.min(w, d) * 0.3); g.stroke();
+    } else if (look === 'geoair') {
+      // 검정 아치 셸터 — 앞이 활짝 열림
+      g.fillStyle = 'rgba(0,0,0,.35)';
+      g.beginPath(); rrPath(g, -hw * 0.86, -hd * 0.86, w * 0.86, d * 0.86, Math.min(w, d) * 0.34); g.fill();
+      // 열린 앞 아치 테두리
+      g.strokeStyle = withA(spec.body, 0.95); g.lineWidth = mid * 2.4;
+      g.beginPath(); g.ellipse(0, -hd * 0.9, hw * 0.93, Math.max(2.4, d * 0.05), 0, Math.PI, TAU); g.stroke();
+      g.strokeStyle = 'rgba(255,255,255,.4)'; g.lineWidth = thin;
+      g.beginPath(); g.ellipse(0, -hd * 0.9, hw * 0.93, Math.max(2.4, d * 0.05), 0, Math.PI, TAU); g.stroke();
+      // 옆면 밝은 메쉬 패널
+      [-1, 1].forEach((sx) => {
+        g.beginPath(); rrPath(g, sx * hw * 0.78 - w * 0.05, -d * 0.15, w * 0.1, d * 0.36, 2);
+        g.fillStyle = 'rgba(150,160,156,.55)'; g.fill();
+        g.strokeStyle = 'rgba(255,255,255,.3)'; g.lineWidth = thin; g.stroke();
+      });
+      // 뒤 막이
+      g.strokeStyle = withA(spec.body, 0.9); g.lineWidth = mid;
+      g.beginPath(); g.ellipse(0, hd * 0.88, hw * 0.9, Math.max(2, d * 0.045), 0, 0, Math.PI); g.stroke();
+    } else if (look === 'poler') {
+      // 올리브 컴팩트 돔 — X 폴대, 주황 지퍼 문
+      ring(hw * 0.99, hd * 0.99, withA(body, 0.9), mid * 1.3);
+      [-1, 1].forEach((s) => line(s * hw * 0.98, -hd * 0.86, s * hw * 0.98, hd * 0.86, poleC, mid));
+      line(0, -hd * 0.99, 0, hd * 0.99, poleC, mid * 0.9);
+      // 앞 문 + 주황 지퍼
+      g.beginPath(); g.ellipse(-hw * 0.14, -hd * 0.74, w * 0.3, d * 0.16, 0, 0, TAU);
+      g.fillStyle = meshC; g.fill();
+      g.strokeStyle = withA(spec.accent || '#e2622a', 0.95); g.lineWidth = mid * 1.4; g.stroke();
+      // 옆 로고
+      g.beginPath();
+      g.moveTo(hw * 0.86, hd * 0.16); g.lineTo(hw * 0.86, hd * 0.3); g.lineTo(hw * 0.86, hd * 0.23);
+      g.fillStyle = '#e8b53a';
+      g.beginPath(); g.arc(hw * 0.84, hd * 0.24, Math.max(1.6, Math.min(w, d) * 0.05), 0, TAU); g.fill();
+      // 뒤 환기
+      meshWin(0, hd * 0.86, w * 0.28, Math.max(2.2, d * 0.05), 4);
+    } else {
+      // 라움 미니 — 낮은 자립형 돔 + 플라이 + X 폴대
+      ring(hw * 0.99, hd * 0.99, withA(body, 0.9), mid * 1.3);
+      ring(hw * 0.86, hd * 0.86, seam, thin);
+      [-1, 1].forEach((s) => {
+        line(s * hw * 0.98, -hd * 0.9, -s * hw * 0.96, hd * 0.9, poleC, mid);
+        meshWin(s * hw * 0.9, d * 0.06, Math.max(2.6, w * 0.09), d * 0.16, 2);
+      });
+      line(-hw * 0.85, -hd * 0.92, hw * 0.85, -hd * 0.92, poleC, mid);
+      // 앞 출입문
+      g.beginPath(); rrPath(g, -hw * 0.36, -hd * 0.99 + 1, w * 0.36, Math.max(2.4, d * 0.035), 3);
+      g.fillStyle = meshC; g.fill(); g.strokeStyle = trimC; g.lineWidth = thin; g.stroke();
+      meshWin(0, hd * 0.93, w * 0.28, Math.max(2.2, d * 0.03), 3);
     }
 
     // 공통 — 바닥 안쪽 라인
     g.strokeStyle = 'rgba(255,255,255,.12)'; g.lineWidth = thin;
-    g.beginPath(); rrPath(g, -hw * 0.88, -hd * 0.9, w * 0.76, d * 0.8, Math.min(w, d) * 0.12); g.stroke();
+    g.beginPath(); rrPath(g, -hw * 0.9, -hd * 0.92, w * 0.8, d * 0.84, Math.min(w, d) * 0.12); g.stroke();
   }
 
-  // 본체 바깥으로 나오는 차양(캐노피) — 평면에서도 앞쪽에 그려 폴대 위치를 보여 줍니다.
+  // 본체 바깥으로 나오는 차양(어닝·미니 타프) — 평면에서 폴대 위치까지 보여 줍니다.
   function drawTentAwning2(g, it, w, d, lw) {
     const look = tentLookOf(it).look;
-    if (look !== 'village' && look !== 'timax') return;
+    if (look !== 'village' && look !== 'timax' && look !== 'geoair') return;
     const spec = TENT_LOOKS[look];
     const hw = w / 2, hd = d / 2;
-    const dep = look === 'village' ? Math.min(d * 0.16, hw * 0.4) : Math.min(d * 0.09, hw * 0.28);
-    const aw = hw * (look === 'village' ? 0.86 : 0.8);
-    const col = withA(look === 'village' ? spec.fly : spec.fly, 0.92);
+    const thin = Math.max(0.8, lw * 0.7);
+    const awW = look === 'village' ? w * 1.12 : look === 'timax' ? w * 0.88 : w * 0.82;
+    const awD = look === 'village' ? Math.min(100, d * 0.24) : look === 'timax' ? Math.min(80, d * 0.13) : Math.min(60, d * 0.2);
     const y0 = -hd;
+    const col = withA(look === 'timax' ? (spec.panel || spec.body) : (spec.panel || spec.body), 0.9);
     g.save();
-    g.fillStyle = col;
-    g.beginPath(); rrPath(g, -aw, y0 - dep, aw * 2, dep, Math.min(3, dep * 0.18)); g.fill();
-    g.strokeStyle = 'rgba(255,255,255,.4)'; g.lineWidth = Math.max(0.9, lw * 0.7); g.stroke();
+    // 천 (앞으로 펼쳐진 사각형)
+    g.beginPath(); rrPath(g, -awW / 2, y0 - awD, awW, awD, 3);
+    g.fillStyle = col; g.fill();
+    g.strokeStyle = 'rgba(255,255,255,.42)'; g.lineWidth = Math.max(0.9, lw * 0.7); g.stroke();
     // 끝단 처짐선
-    g.strokeStyle = 'rgba(0,0,0,.28)'; g.lineWidth = Math.max(0.8, lw * 0.6);
-    g.beginPath(); g.moveTo(-aw * 0.98, y0 - dep * 0.62); g.lineTo(aw * 0.98, y0 - dep * 0.62); g.stroke();
-    // 폴대 2개 (앞 모서리)
+    g.strokeStyle = 'rgba(0,0,0,.26)'; g.lineWidth = Math.max(0.8, lw * 0.6);
+    g.beginPath(); g.moveTo(-awW * 0.48, y0 - awD * 0.6); g.lineTo(awW * 0.48, y0 - awD * 0.6); g.stroke();
+    // 폴대 2개 + 가이라인
     [-1, 1].forEach((sx) => {
-      const px = sx * aw * 0.92, py = y0 - dep * 0.86;
-      g.beginPath(); g.arc(px, py, Math.max(1.8, lw * 1.5), 0, TAU);
+      const px = sx * awW * 0.45, py = y0 - awD * 0.92;
+      g.beginPath(); g.arc(px, py, Math.max(1.9, lw * 1.6), 0, TAU);
       g.fillStyle = 'rgba(240,246,255,.95)'; g.fill();
       g.strokeStyle = 'rgba(20,26,34,.8)'; g.lineWidth = Math.max(0.8, lw * 0.6); g.stroke();
-      // 가이라인
-      g.strokeStyle = 'rgba(255,255,255,.45)'; g.lineWidth = Math.max(0.7, lw * 0.5);
-      g.beginPath(); g.moveTo(px, py); g.lineTo(px + sx * dep * 0.5, py - dep * 0.9); g.stroke();
+      g.strokeStyle = 'rgba(255,255,255,.4)'; g.lineWidth = Math.max(0.7, lw * 0.5);
+      g.beginPath(); g.moveTo(px, py); g.lineTo(px + sx * awD * 0.35, py - awD * 0.6); g.stroke();
     });
     g.restore();
   }
@@ -2974,7 +3001,7 @@
 
     scene.add(new THREE.HemisphereLight(0xbfd8f2, 0x2c2519, 1.05));
     const sun = new THREE.DirectionalLight(0xfff1da, 2.05);
-    sun.position.set(-6, 11, 7);
+    sun.position.set(5.5, 12, -8.5);
     sun.castShadow = true;
     sun.shadow.mapSize.set(1024, 1024);
     sun.shadow.camera.near = 0.5;
@@ -2986,8 +3013,8 @@
     sun.shadow.bias = -0.0008;
     scene.add(sun);
     V3.sun = sun;
-    const fill = new THREE.DirectionalLight(0x88b6ff, 0.45);
-    fill.position.set(8, 6, -9);
+    const fill = new THREE.DirectionalLight(0x9dbfe8, 0.5);
+    fill.position.set(-8, 6, 9);
     scene.add(fill);
 
     bind3DControls(canvas);
@@ -3140,394 +3167,536 @@
     grp.add(new THREE.Line(geo, new THREE.LineBasicMaterial({ color: color || '#d7e8f8', transparent: true, opacity: 0.34 })));
   }
 
-  /* ==================== 3D 텐트 — 실제 제품별 조립 ==================== */
-  /* 각 텐트의 실제 구조(지오데식 돔 / 터널·에어빔 / 로지형 / 캐빈)를 폴대·플라이·
-     창문·출입문·캐노피로 나누어 만듭니다. 색은 제품 대표색(TENT_LOOKS)을 씁니다. */
+  /* ==================== 3D 텐트 — 실제 제품 사진 그대로 ==================== */
+  /* tmp/tent_refs 의 제품 사진과 유수정 님의 실제 피칭 사진을 보고
+     실루엣·지붕/벽 각도·창문·어닝·폴대를 텐트마다 따로 만듭니다. */
   function buildTent3(grp, it, w, d, h) {
     const T = V3.THREE;
-    const lookInfo = tentLookOf(it);
-    const look = lookInfo.look;
-    const spec = lookInfo.spec;
+    const info = tentLookOf(it);
+    const look = info.look, spec = info.spec;
     const body = /^#[0-9a-f]{6}$/i.test(it.color || '') ? it.color : spec.body;
+    const hw = w * 0.5, hd = d * 0.5;
 
-    const bodyMat = new T.MeshStandardMaterial({ color: body, roughness: 0.94, metalness: 0.02, side: T.DoubleSide });
-    const flyMat = new T.MeshStandardMaterial({ color: spec.fly, roughness: 0.93, metalness: 0.02, side: T.DoubleSide });
-    const poleMat = new T.MeshStandardMaterial({ color: spec.pole, roughness: 0.5, metalness: 0.35 });
-    const meshMat = new T.MeshStandardMaterial({ color: shade(spec.mesh, 0.22), roughness: 0.45, metalness: 0.12, side: T.DoubleSide, transparent: true, opacity: 0.95 });
-    const frameMat = new T.MeshStandardMaterial({ color: shade(body, -0.42), roughness: 0.9, side: T.DoubleSide });
-    const doorMat = new T.MeshStandardMaterial({ color: shade(body, -0.34), roughness: 0.95, side: T.DoubleSide });
-    const beamMat = new T.MeshStandardMaterial({ color: shade(body, 0.1), roughness: 0.95, metalness: 0.02 });
-    const trimMat = new T.MeshStandardMaterial({ color: '#1e2227', roughness: 0.7, metalness: 0.3 });
+    const fab = (c, o) => new T.MeshStandardMaterial(Object.assign({
+      color: c, roughness: 0.95, metalness: 0.02, side: T.DoubleSide
+    }, o || {}));
+    const bodyMat = fab(body);
+    const panelMat = fab(spec.panel || tintHex(body, 0.12));
+    const roofMat = fab(spec.roof || tintHex(body, 0.05));
+    const trimMat = fab(spec.trim || shade(body, -0.45), { roughness: 0.74, metalness: 0.14 });
+    const skirtMat = fab(spec.skirt || shade(body, -0.6), { roughness: 0.9 });
+    const poleMat = new T.MeshStandardMaterial({ color: spec.pole || '#282c30', roughness: 0.38, metalness: 0.5 });
+    const meshMat = new T.MeshStandardMaterial({
+      color: spec.mesh || '#2a3138', roughness: 0.66, metalness: 0.08,
+      side: T.DoubleSide, transparent: true, opacity: 0.92
+    });
+    const accentMat = fab(spec.accent || '#e07a2c');
+    const softFab = (c) => new T.MeshStandardMaterial({
+      color: c, roughness: 0.97, metalness: 0.0, side: T.DoubleSide,
+      emissive: new T.Color(c), emissiveIntensity: 0.18
+    });
+    const awningMat = softFab(spec.panel || tintHex(body, 0.12));
 
-    const V = (x, y, z) => new T.Vector3(x, y, z);
-    const put = (geo, m, x, y, z, rx) => {
+    const V = (x, y, z) => new T.Vector3(x || 0, y || 0, z || 0);
+    const add = (geo, m, x, y, z) => {
       const ms = new T.Mesh(geo, m);
       ms.position.set(x || 0, y || 0, z || 0);
-      if (rx) ms.rotation.x = rx;
       ms.castShadow = true; ms.receiveShadow = true;
       grp.add(ms);
       return ms;
     };
-    const tube = (pts, radius, m) => {
-      const curve = new T.CatmullRomCurve3(pts);
-      const ms = put(new T.TubeGeometry(curve, Math.max(14, pts.length * 3), radius, 7, false), m);
-      ms.castShadow = false;      // 표면에 붙은 폴대가 자기 그림자를 만들지 않게
+    const tube = (pts, r, m, closed) => {
+      const cv = new T.CatmullRomCurve3(pts, !!closed);
+      const ms = add(new T.TubeGeometry(cv, Math.max(16, pts.length * 3), r, 6, !!closed), m);
+      ms.castShadow = false;
       return ms;
     };
-    const shapeOf = (pts2) => {
+    const shapeOf = (pts) => {
       const s = new T.Shape();
-      pts2.forEach((p, i) => { if (i === 0) s.moveTo(p.x, p.y); else s.lineTo(p.x, p.y); });
+      pts.forEach((p, i) => { if (i === 0) s.moveTo(p.x, p.y); else s.lineTo(p.x, p.y); });
       s.closePath();
       return s;
     };
-
-    // 벽 + 둥근 지붕 단면 (왼쪽 아래 → 벽 → 둥근 어깨 → 꼭대기 → 오른쪽 → 오른쪽 아래)
-    const sectionPts = (halfW, top, wallR, seg) => {
-      const out = [];
-      const wallY = top * wallR, n = seg || 8;
-      out.push({ x: -halfW, y: 0 });
-      if (wallY > 0.001) out.push({ x: -halfW, y: wallY });
+    const extrudeZ = (pts, depth, m, zc) => {
+      const g = new T.ExtrudeGeometry(shapeOf(pts), { depth: depth, bevelEnabled: false, curveSegments: 2 });
+      g.translate(0, 0, (zc || 0) - depth / 2);
+      return add(g, m);
+    };
+    // 단면 곡선 — 벽 높이·어깨 곡률·천장 폭·벽 기울기
+    const profile = (o) => {
+      const W = o.halfW, H = o.h;
+      const wall = (o.wall == null ? 0.5 : o.wall);
+      const wallY = H * wall, topX = W * (o.topW == null ? 0 : o.topW);
+      const taper = (o.taper == null ? 1 : o.taper);
+      const n = o.round || 7, out = [];
+      out.push({ x: -W, y: 0 });
+      out.push({ x: -W * taper, y: wallY });
+      const c1 = { x: -W * taper, y: wallY + (H - wallY) * (o.ctrl == null ? 0.62 : o.ctrl) };
       for (let i = 1; i <= n; i++) {
         const t = i / n, mt = 1 - t;
         out.push({
-          x: mt * mt * (-halfW) + 2 * mt * t * (-halfW) + t * t * 0,
-          y: mt * mt * wallY + 2 * mt * t * top + t * t * top
+          x: mt * mt * (-W * taper) + 2 * mt * t * c1.x + t * t * (-topX),
+          y: mt * mt * wallY + 2 * mt * t * c1.y + t * t * H
         });
       }
-      for (let i = 1; i <= n; i++) {
-        const t = i / n, mt = 1 - t;
-        out.push({
-          x: mt * mt * 0 + 2 * mt * t * halfW + t * t * halfW,
-          y: mt * mt * top + 2 * mt * t * top + t * t * wallY
-        });
-      }
-      if (wallY > 0.001) out.push({ x: halfW, y: wallY });
-      out.push({ x: halfW, y: 0 });
+      for (let i = out.length - 2; i >= 1; i--) out.push({ x: -out[i].x, y: out[i].y });
+      out.push({ x: W, y: 0 });
       return out;
     };
-    const extrudeSection = (pts2, depth, m, kx) => {
-      const g = new T.ExtrudeGeometry(shapeOf(pts2), { depth: depth, bevelEnabled: false, curveSegments: 1 });
-      g.translate(0, 0, -depth / 2);
-      if (kx) g.scale(kx, 1, 1);
-      return put(g, m);
-    };
-
-    // 돔 껍질 (아래 벽 + 둥근 지붕) — 타원 단면
-    const domeProf = (wallR, seg) => {
-      const prof = [new T.Vector2(0.999, 0)];
-      const n = seg || 9;
-      for (let i = 0; i <= n; i++) {
-        const t = i / n, a = t * Math.PI / 2;
-        // 반지름은 천천히 줄고 높이는 빠르게 올라 편평한 지오데식 돔 모양
-        prof.push(new T.Vector2(Math.pow(Math.cos(a), 0.72) * 0.999, wallR + Math.pow(Math.sin(a), 1.18) * (1 - wallR)));
+    const loft = (pts, stations, m, capEnds) => {
+      const st = stations.map((s) => pts.map((p) => ({
+        x: p.x * (s.kx == null ? 1 : s.kx), y: p.y * (s.ky == null ? 1 : s.ky), z: s.z
+      })));
+      const pos = [];
+      for (let s = 0; s < st.length - 1; s++) {
+        const A = st[s], B = st[s + 1];
+        for (let i = 0; i < A.length - 1; i++) {
+          const a0 = A[i], a1 = A[i + 1], b0 = B[i], b1 = B[i + 1];
+          pos.push(a0.x, a0.y, a0.z, b0.x, b0.y, b0.z, b1.x, b1.y, b1.z);
+          pos.push(a0.x, a0.y, a0.z, b1.x, b1.y, b1.z, a1.x, a1.y, a1.z);
+        }
       }
-      return prof;
+      const g = new T.BufferGeometry();
+      g.setAttribute('position', new T.Float32BufferAttribute(pos, 3));
+      g.computeVertexNormals();
+      const ms = add(g, m);
+      if (capEnds) {
+        [st[0], st[st.length - 1]].forEach((S, idx) => {
+          const cg = add(new T.ShapeGeometry(shapeOf(S), 1), m, 0, 0, S[0].z);
+          if (idx === 0) cg.rotation.y = Math.PI;
+          cg.castShadow = false;
+        });
+      }
+      return ms;
     };
-    const domeShell = (wallR, m, k) => {
-      const g = new T.LatheGeometry(domeProf(wallR), 42);
-      g.scale(w * 0.5 * (k || 1), h * (k || 1), d * 0.5 * (k || 1));
-      return put(g, m);
-    };
-    let domeRibCount = 0;
-    const domeRib = (wallR, theta, radius) => {
-      domeRibCount++;
-      const prof = domeProf(wallR), k = 1.012;
-      const s1 = prof.map((p) => V(p.x * w * 0.5 * k * Math.cos(theta), p.y * h * k, p.x * d * 0.5 * k * Math.sin(theta)));
-      const s2 = prof.slice(1).reverse().slice(1).map((p) => V(p.x * w * 0.5 * k * Math.cos(theta + Math.PI), p.y * h * k, p.x * d * 0.5 * k * Math.sin(theta + Math.PI)));
-      return tube(s1.concat(s2), radius, poleMat);
-    };
-
-    // 아치 모양 판 (출입문·창문) — 아래가 뚫린 반원형 지붕
-    const archPanel = (halfW, top, wallR, m) => {
+    const archGeo = (wd, hh, rise) => {
       const s = new T.Shape();
-      const wallY = top * wallR;
-      s.moveTo(-halfW, 0);
-      s.lineTo(-halfW, wallY);
-      s.quadraticCurveTo(-halfW, top, 0, top);
-      s.quadraticCurveTo(halfW, top, halfW, wallY);
-      s.lineTo(halfW, 0);
+      const r = Math.min(wd * 0.5, hh, (rise == null ? wd * 0.5 : rise));
+      s.moveTo(-wd / 2, 0);
+      s.lineTo(-wd / 2, hh - r);
+      s.quadraticCurveTo(-wd / 2, hh, 0, hh);
+      s.quadraticCurveTo(wd / 2, hh, wd / 2, hh - r);
+      s.lineTo(wd / 2, 0);
       s.closePath();
-      return new T.ShapeGeometry(s, 18);
+      return new T.ShapeGeometry(s, 12);
     };
-    // 앞쪽 출입 현관(베스티블) — 작은 아치 터널
-    const porch = (halfW, top, depth, wallR, m) => {
-      const sec = sectionPts(halfW, top, wallR, 6);
-      const g = new T.ExtrudeGeometry(shapeOf(sec), { depth: depth, bevelEnabled: false, curveSegments: 1 });
-      return g;
+    // 앞면(법선 -z) 창·문: 천 테두리 + 메쉬
+    const winFront = (cx, y0, wd, hh, rise, meshM, frameM, zz) => {
+      const zf = (zz == null ? -hd : zz);
+      add(archGeo(wd + 0.055, hh + 0.05, (rise == null ? wd / 2 : rise) + 0.02), frameM || trimMat, cx, y0, zf - 0.004);
+      add(archGeo(wd, hh, rise == null ? wd / 2 : rise), meshM || meshMat, cx, y0, zf - 0.010);
     };
-    const sideWindow = (sx, y0, y1, zc, len) => {
-      // 벽면에 붙는 메쉬 창 — 테두리(어두운 판) + 메쉬
-      const hh = y1 - y0;
-      put(new T.PlaneGeometry(len + 0.07, hh + 0.07), frameMat, sx * (w * 0.5 + 0.007), (y0 + y1) / 2, zc).rotation.y = sx * Math.PI / 2;
-      put(new T.PlaneGeometry(len, hh), meshMat, sx * (w * 0.5 + 0.016), (y0 + y1) / 2, zc).rotation.y = sx * Math.PI / 2;
+    const winBack = (cx, y0, wd, hh, rise, meshM, frameM) => {
+      add(archGeo(wd + 0.055, hh + 0.05, (rise == null ? wd / 2 : rise) + 0.02), frameM || trimMat, cx, y0, hd + 0.004);
+      add(archGeo(wd, hh, rise == null ? wd / 2 : rise), meshM || meshMat, cx, y0, hd + 0.010);
     };
-    const frontWindow = (zc, halfW, y0, y1, m) => {
-      put(new T.PlaneGeometry(halfW * 2 + 0.07, (y1 - y0) + 0.07), frameMat, 0, (y0 + y1) / 2, zc);
-      put(new T.PlaneGeometry(halfW * 2, y1 - y0), m || meshMat, 0, (y0 + y1) / 2, zc * 1.002);
+    const winSide = (sx, zc, y0, wd, hh, rise, meshM, frameM) => {
+      const a = add(archGeo(wd + 0.055, hh + 0.05, (rise == null ? wd / 2 : rise) + 0.02), frameM || trimMat, sx * (hw + 0.004), y0, zc);
+      a.rotation.y = sx * Math.PI / 2;
+      const b = add(archGeo(wd, hh, rise == null ? wd / 2 : rise), meshM || meshMat, sx * (hw + 0.010), y0, zc);
+      b.rotation.y = sx * Math.PI / 2;
     };
-    const zipper = (x, y0, y1, z) => {
-      put(new T.BoxGeometry(0.018, y1 - y0, 0.014), trimMat, x, (y0 + y1) / 2, z).castShadow = false;
+    // 바닥 자락 — 네모난 천 (터널·캐빈)
+    const skirtBand = (hgt, m, k) => {
+      const kx = k || 1.006;
+      add(new T.BoxGeometry(w * kx, hgt, 0.014), m, 0, hgt / 2, -hd * kx);
+      add(new T.BoxGeometry(w * kx, hgt, 0.014), m, 0, hgt / 2, hd * kx);
+      add(new T.BoxGeometry(0.014, hgt, d * kx), m, -hw * kx, hgt / 2, 0);
+      add(new T.BoxGeometry(0.014, hgt, d * kx), m, hw * kx, hgt / 2, 0);
+    };
+    // 바닥 자락 — 둥근(타원) 천 (돔)
+    const ringSkirt = (hgt, m, k) => {
+      const g = new T.CylinderGeometry(1, 1.02, hgt, 36, 1, true);
+      const ms = add(g, m, 0, hgt / 2, 0);
+      ms.scale.set(hw * (k || 1.005), 1, hd * (k || 1.005));
+      return ms;
+    };
+    // 끝면 경사판 — 단면(아치)에서 바닥 앞선까지 펼친 사다리꼴
+    const apron = (prof, zTop, zBot, m, spread) => {
+      const pos = [], k = spread == null ? 1.02 : spread;
+      for (let i = 0; i < prof.length - 1; i++) {
+        const a = prof[i], b = prof[i + 1];
+        const A = [a.x, a.y, zTop], B = [b.x, b.y, zTop];
+        const C = [a.x * k, 0, zBot], D = [b.x * k, 0, zBot];
+        pos.push(A[0], A[1], A[2], C[0], C[1], C[2], D[0], D[1], D[2]);
+        pos.push(A[0], A[1], A[2], D[0], D[1], D[2], B[0], B[1], B[2]);
+      }
+      const g = new T.BufferGeometry();
+      g.setAttribute('position', new T.Float32BufferAttribute(pos, 3));
+      g.computeVertexNormals();
+      return add(g, m);
+    };
+    // 원형 단면 돔 껍질 (각진 면)
+    const facetedDome = (prof, seg, mat, colFn) => {
+      const pos = [], col = [];
+      const cA = new T.Color(body), cB = new T.Color(spec.panel || tintHex(body, 0.16));
+      for (let ri = 0; ri < prof.length - 1; ri++) {
+        for (let si = 0; si < seg; si++) {
+          const a0 = (si / seg) * Math.PI * 2, a1 = ((si + 1) / seg) * Math.PI * 2;
+          const p00 = [Math.cos(a0) * prof[ri].r * hw, prof[ri].y * h, Math.sin(a0) * prof[ri].r * hd];
+          const p01 = [Math.cos(a1) * prof[ri].r * hw, prof[ri].y * h, Math.sin(a1) * prof[ri].r * hd];
+          const p10 = [Math.cos(a0) * prof[ri + 1].r * hw, prof[ri + 1].y * h, Math.sin(a0) * prof[ri + 1].r * hd];
+          const p11 = [Math.cos(a1) * prof[ri + 1].r * hw, prof[ri + 1].y * h, Math.sin(a1) * prof[ri + 1].r * hd];
+          const c = colFn ? colFn(ri, si) : null;
+          [[p00, p10, p11], [p00, p11, p01]].forEach((tri3) => {
+            tri3.forEach((q) => {
+              pos.push(q[0], q[1], q[2]);
+              if (c) col.push(c.r, c.g, c.b);
+            });
+          });
+        }
+      }
+      const g = new T.BufferGeometry();
+      g.setAttribute('position', new T.Float32BufferAttribute(pos, 3));
+      if (col.length) g.setAttribute('color', new T.Float32BufferAttribute(col, 3));
+      g.computeVertexNormals();
+      const m2 = col.length
+        ? new T.MeshStandardMaterial({ vertexColors: true, roughness: 0.95, metalness: 0.02, side: T.DoubleSide })
+        : mat;
+      return add(g, m2);
     };
 
-    /* ---------- 1) 빌리지 5.0 — 로지형 원터치 ---------- */
+    /* ---------- 1) 네이처하이크 빌리지 5.0 — 오두막 + 큰 어닝 ---------- */
     if (look === 'village') {
-      const wallR = 0.62;
-      const sec = sectionPts(w * 0.5, h, wallR, 9);
-      extrudeSection(sec, d, bodyMat);
-      // 어두운 플라이 — 지붕 위 얇은 껍질 (처마에서 살짝 내려오게)
-      const cut = h * (wallR - 0.06);
-      const upper = sec.filter((p) => p.y >= cut - 0.001);
-      const outer = upper.map((p) => ({ x: p.x * 1.028, y: p.y + 0.03 }));
-      const inner = upper.slice().reverse().map((p) => ({ x: p.x * 0.985, y: p.y + 0.055 }));
-      const band = outer.concat(inner);
-      const fg = new T.ExtrudeGeometry(shapeOf(band), { depth: d * 1.02, bevelEnabled: false, curveSegments: 1 });
-      fg.translate(0, 0, -d * 1.02 / 2);
-      put(fg, flyMat);
-      // 지붕 능선 폴대
-      put(new T.BoxGeometry(0.055, 0.055, d * 1.03), poleMat, 0, h + 0.055, 0);
-      // 옆면 메쉬 창문 (양쪽 2개씩) + 지퍼
+      const wallH = h * 0.7, eave = hw * 0.995;
+      const porch = Math.min(1.2, d * 0.26);       // 앞 베란다(덮인 공간)
+      const vH = h * 0.72;                          // 베란다 앞벽 높이 — 수평 상단(처마선)
+      const sec = [{ x: -eave, y: 0 }, { x: -eave, y: wallH }, { x: 0, y: h }, { x: eave, y: wallH }, { x: eave, y: 0 }];
+      // 본체 오두막 (베란다 뒤)
+      extrudeZ(sec, d - porch, bodyMat, porch / 2);
+      // 베란다 앞벽 — 사진의 넓고 평평한 앞면
+      const vw = eave * 0.995;
+      extrudeZ([{ x: -vw, y: 0 }, { x: -vw, y: vH }, { x: vw, y: vH }, { x: vw, y: 0 }], porch, bodyMat, -hd + porch / 2);
+      // 용마루·처마 트림
+      add(new T.BoxGeometry(0.05, 0.045, d * 1.004), trimMat, 0, h + 0.02, 0).castShadow = false;
       [-1, 1].forEach((sx) => {
-        [-0.235, 0.235].forEach((fz) => {
-          sideWindow(sx, h * 0.14, h * 0.42, fz * d, d * 0.3);
+        add(new T.BoxGeometry(0.045, 0.04, d * 1.002), trimMat, sx * eave, wallH + 0.01, 0).castShadow = false;
+      });
+      // 베란다 상단 트림
+      add(new T.BoxGeometry(vw * 2, 0.04, 0.05), trimMat, 0, vH, -hd + 0.01).castShadow = false;
+      // 옆면 큰 메쉬창 2개
+      [-1, 1].forEach((sx) => {
+        winSide(sx, -d * 0.12, h * 0.14, d * 0.24, h * 0.24, h * 0.12, meshMat, panelMat);
+        winSide(sx, d * 0.2, h * 0.14, d * 0.2, h * 0.2, h * 0.1, meshMat, panelMat);
+      });
+      // 앞면 — 왼쪽 큰 아치 출입문, 오른쪽 격자 창, 위 메쉬 띠
+      const fz = -hd;
+      winFront(-w * 0.26, 0.02, w * 0.3, vH * 0.78, vH * 0.24, meshMat, panelMat);
+      add(new T.BoxGeometry(w * 0.32, 0.028, 0.016), panelMat, -w * 0.26, vH * 0.02, fz - 0.012).castShadow = false;
+      add(new T.BoxGeometry(0.016, vH * 0.78, 0.014), panelMat, -w * 0.26, vH * 0.41, fz - 0.016).castShadow = false;
+      // 오른쪽 창 — 격자
+      add(new T.PlaneGeometry(w * 0.42, vH * 0.42), meshMat, w * 0.26, vH * 0.52, fz - 0.008);
+      add(new T.BoxGeometry(w * 0.44, vH * 0.44, 0.014), panelMat, w * 0.26, vH * 0.52, fz - 0.002).castShadow = false;
+      add(new T.PlaneGeometry(w * 0.42, vH * 0.42), meshMat, w * 0.26, vH * 0.52, fz - 0.012);
+      [-0.28, 0, 0.28].forEach((k) => {
+        add(new T.BoxGeometry(0.02, vH * 0.42, 0.012), panelMat, w * 0.26 + w * 0.42 * k, vH * 0.52, fz - 0.016).castShadow = false;
+      });
+      // 베란다 위 환기 메쉬 띠 (어닝 바로 아래)
+      add(new T.PlaneGeometry(vw * 1.7, h * 0.1), meshMat, 0, vH - h * 0.07, -hd - 0.006);
+      // 뒤 창
+      winBack(0, h * 0.26, hw * 0.5, h * 0.2, 0.06, meshMat, panelMat);
+      // 큰 어닝 — 앞으로 살짝 내려가며 뻗고, 양끝 폴대 2개
+      const awW = w * 1.12, awD = Math.min(1.0, d * 0.24), droop = 0.12;
+      const ag = new T.PlaneGeometry(awW, awD, 10, 5);
+      const ap = ag.attributes.position;
+      for (let i = 0; i < ap.count; i++) {
+        const u = (ap.getX(i) / awW) + 0.5, v = (ap.getY(i) / awD) + 0.5;
+        ap.setZ(i, -0.035 * Math.sin(u * Math.PI) * Math.sin(v * Math.PI * 0.8));
+      }
+      ap.needsUpdate = true; ag.computeVertexNormals();
+      const aw = add(ag, awningMat, 0, vH - (awD * 0.5) * Math.sin(droop), -hd - (awD * 0.5) * Math.cos(droop));
+      aw.rotation.x = -Math.PI / 2 + droop;
+      const poleH = vH - awD * Math.sin(droop);
+      [-1, 1].forEach((sx) => {
+        add(new T.CylinderGeometry(0.019, 0.024, poleH, 10), poleMat, sx * awW * 0.45, poleH / 2, -hd - awD * 0.92);
+        addGuy3(grp, [[sx * awW * 0.45, poleH, -hd - awD * 0.92], [sx * awW * 0.54, 0.01, -hd - awD * 1.5]]);
+        addGuy3(grp, [[sx * awW * 0.45, poleH - 0.04, -hd - awD * 0.9], [sx * w * 0.5, vH, -hd]]);
+      });
+      skirtBand(h * 0.07, skirtMat, 1.005);
+      [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach((p) => {
+        addGuy3(grp, [[p[0] * hw * 0.96, h * 0.5, p[1] * hd * 0.96], [p[0] * (hw + 0.5), 0.01, p[1] * (hd + 0.5)]]);
+      });
+      return grp;
+    }
+
+    /* ---------- 2) 야크돔 450 — 각진 지오데식 돔 ---------- */
+    if (look === 'yakdome') {
+      const prof = [
+        { r: 1.0, y: 0 }, { r: 1.0, y: 0.14 }, { r: 0.975, y: 0.34 },
+        { r: 0.9, y: 0.54 }, { r: 0.77, y: 0.72 }, { r: 0.56, y: 0.87 }, { r: 0.3, y: 0.96 }, { r: 0, y: 1.0 }
+      ];
+      const cA = new T.Color(body), cB = new T.Color(spec.panel || tintHex(body, 0.16));
+      facetedDome(prof, 12, null, (ri, si) => {
+        if (ri >= 4) return cB;                 // 위쪽은 밝은 베이지 패널
+        return (ri + si) % 3 === 0 ? cB : cA;
+      });
+      const profR = (y) => {
+        for (let i = 0; i < prof.length - 1; i++) {
+          if (y >= prof[i].y && y <= prof[i + 1].y) {
+            const t = (y - prof[i].y) / (prof[i + 1].y - prof[i].y);
+            return prof[i].r + (prof[i + 1].r - prof[i].r) * t;
+          }
+        }
+        return 0;
+      };
+      // 검정 폴대 — 돔을 가로질러 X자로 교차
+      const meridian = (th) => {
+        const pts = [];
+        for (let i = 0; i < prof.length; i++) {
+          const r = prof[i].r * 1.008, y = prof[i].y;
+          pts.push(V(Math.cos(th) * r * hw, Math.min(h * 0.995, y * h + 0.004), Math.sin(th) * r * hd));
+        }
+        return pts;
+      };
+      [0, Math.PI, Math.PI / 3, Math.PI * 4 / 3, -Math.PI / 3, Math.PI * 2 / 3].forEach((th) => tube(meridian(th), 0.036, poleMat));
+      // 꼭대기 삼각 메쉬 환기창 3개
+      [Math.PI * 0.15, Math.PI * 0.82, Math.PI * 1.48].forEach((th) => {
+        const y0 = h * 0.72, y1 = h * 0.95, wA = 0.62;
+        const r0 = profR(0.72) * 1.016, r1 = profR(0.95) * 1.016;
+        const P0 = V(Math.cos(th - wA) * r0 * hw, y0, Math.sin(th - wA) * r0 * hd);
+        const P1 = V(Math.cos(th + wA) * r0 * hw, y0, Math.sin(th + wA) * r0 * hd);
+        const P2 = V(Math.cos(th) * r1 * hw, y1, Math.sin(th) * r1 * hd);
+        const tg = new T.BufferGeometry().setFromPoints([P0, P1, P2]);
+        tg.setIndex([0, 1, 2]);
+        tg.computeVertexNormals();
+        add(tg, meshMat).castShadow = false;
+        tube([P0, P1, P2, P0], 0.02, poleMat, true);
+      });
+      // 앞 출입문 — 낮은 사각 문 + 지퍼
+      const dw = hw * 0.56, dh = h * 0.3, dz = -hd * 0.99;
+      add(new T.PlaneGeometry(dw + 0.07, dh + 0.06), trimMat, -hw * 0.22, dh * 0.5 + 0.01, dz - 0.004);
+      add(new T.PlaneGeometry(dw, dh), meshMat, -hw * 0.22, dh * 0.5 + 0.02, dz - 0.010);
+      add(new T.BoxGeometry(dw, 0.016, 0.012), trimMat, -hw * 0.22, dh + 0.03, dz - 0.012).castShadow = false;
+      // 꼭대기 환기캡
+      add(new T.CylinderGeometry(0.06, 0.09, 0.1, 10), trimMat, 0, h + 0.02, 0);
+      ringSkirt(h * 0.075, skirtMat, 1.012);
+      // 가이라인
+      [0, Math.PI / 3, Math.PI * 2 / 3, Math.PI, Math.PI * 4 / 3, Math.PI * 5 / 3].forEach((th) => {
+        addGuy3(grp, [[Math.cos(th) * hw * 0.99, h * 0.3, Math.sin(th) * hd * 0.99],
+          [Math.cos(th) * (hw + 0.5), 0.01, Math.sin(th) * (hd + 0.5)]]);
+      });
+      return grp;
+    }
+
+    /* ---------- 3) 위켄트립 모델V — 올블랙 V자 사면 에어텐트 ---------- */
+    if (look === 'modelv') {
+      const endD = Math.min(1.0, d * 0.16);
+      const shellMat = fab(body, { roughness: 0.66, metalness: 0.18 });
+      const seamMat = fab(tintHex(body, 0.28), { roughness: 0.7, metalness: 0.1 });
+      const sec = profile({ halfW: hw, h: h, wall: 0.5, topW: 0.56, taper: 0.99, ctrl: 0.8, round: 9 });
+      loft(sec, [{ z: -hd + endD, kx: 1, ky: 1 }, { z: 0, kx: 1.008, ky: 1.006 }, { z: hd - endD, kx: 1, ky: 1 }], shellMat, false);
+      // 앞뒤 사선 사면 — 사다리꼴로 뻗어 내려오는 컷
+      apron(sec, -hd + endD, -hd, shellMat, 1.012);
+      apron(sec, hd - endD, hd, shellMat, 1.012);
+      // 지붕·어깨 이음선
+      [-0.62, 0.62].forEach((fx) => {
+        tube([V(hw * fx, h * 0.88, -hd + endD), V(hw * fx, h * 0.88, hd - endD)], 0.012, seamMat);
+      });
+      tube([V(0, h * 1.002, -hd + endD + 0.2), V(0, h * 1.002, hd - endD - 0.2)], 0.014, seamMat);
+      // 사면 위 굵은 에어기둥 V자
+      [-1, 1].forEach((sx) => {
+        tube([V(0, h * 0.99, -hd + endD + 0.01), V(sx * hw * 0.45, h * 0.58, -hd + endD * 0.42), V(sx * hw * 0.92, 0.03, -hd + 0.05)], 0.075, shellMat);
+        tube([V(0, h * 0.99, hd - endD - 0.01), V(sx * hw * 0.45, h * 0.58, hd - endD * 0.42), V(sx * hw * 0.92, 0.03, hd - 0.05)], 0.075, shellMat);
+      });
+      // 지붕 중앙 검정 메쉬 환기창
+      add(new T.PlaneGeometry(hw * 0.52, d * 0.22), meshMat, 0, h * 1.004, 0).rotation.x = -Math.PI / 2;
+      add(new T.BoxGeometry(hw * 0.56, 0.022, d * 0.225), trimMat, 0, h * 0.999, 0).castShadow = false;
+      // 옆면 큰 뾰족 아치 문 + 작은 아치 창
+      [-1, 1].forEach((sx) => {
+        winSide(sx, -d * 0.01, 0.02, d * 0.32, h * 0.62, h * 0.3, meshMat, trimMat);
+        winSide(sx, d * 0.3, 0.02, d * 0.17, h * 0.42, h * 0.2, meshMat, trimMat);
+        const zz = -d * 0.01, wd = d * 0.32;
+        add(new T.BoxGeometry(0.012, h * 0.62, 0.024), trimMat, sx * (hw + 0.014), h * 0.31, zz - wd / 2).castShadow = false;
+        add(new T.BoxGeometry(0.012, h * 0.62, 0.024), trimMat, sx * (hw + 0.014), h * 0.31, zz + wd / 2).castShadow = false;
+      });
+      // 사면 이음선 + 브랜드 라벨
+      [0.3, 0.52, 0.72].forEach((fy) => {
+        add(new T.BoxGeometry(hw * fy * 2, 0.012, 0.014), seamMat, 0, h * (0.34 + fy * 0.55), -hd + 0.012).castShadow = false;
+      });
+      add(new T.PlaneGeometry(0.36, 0.11), new T.MeshStandardMaterial({ color: '#e9ecef', roughness: 0.8 }), -w * 0.1, h * 0.08, -hd - 0.02);
+      skirtBand(h * 0.05, skirtMat, 1.008);
+      [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach((p) => {
+        addGuy3(grp, [[p[0] * hw * 0.99, h * 0.42, p[1] * (hd - 0.1)], [p[0] * (hw + 0.6), 0.01, p[1] * (hd + 0.7)]]);
+      });
+      return grp;
+    }
+
+    /* ---------- 4) 제드 티맥스 EX — 크림색 3룸 터널 ---------- */
+    if (look === 'timax') {
+      const sec = profile({ halfW: hw, h: h, wall: 0.46, topW: 0.46, taper: 0.995, ctrl: 0.66, round: 8 });
+      loft(sec, [
+        { z: -hd, kx: 0.9, ky: 0.86 }, { z: -hd + 0.35, kx: 0.99, ky: 0.99 },
+        { z: 0, kx: 1, ky: 1 },
+        { z: hd - 0.6, kx: 0.99, ky: 0.98 }, { z: hd - 0.1, kx: 0.9, ky: 0.82 }, { z: hd, kx: 0.72, ky: 0.6 }
+      ], bodyMat, true);
+      for (let i = 0; i < 5; i++) {
+        const z = -hd + 0.5 + (d - 1.0) * (i / 4);
+        tube(sec.map((p) => V(p.x * 1.008, p.y * 1.006, z)), 0.026, poleMat);
+      }
+      [-1, 1].forEach((sx) => {
+        [-0.3, 0, 0.3].forEach((fz) => {
+          const zc = fz * d, wd = d * 0.2, hh = h * 0.5;
+          winSide(sx, zc, h * 0.1, wd, hh, wd * 0.5, meshMat, panelMat);
+          addGuy3(grp, [[sx * (hw + 0.012), h * 0.1, zc - wd * 0.42], [sx * (hw + 0.012), h * 0.1 + hh * 0.82, zc + wd * 0.42]]);
         });
       });
-      // 앞 출입문 (아치) + 지퍼
-      put(archPanel(w * 0.21, h * 0.62, 0.5, doorMat), doorMat, 0, 0, -d * 0.5 - 0.012);
-      zipper(0, 0.02, h * 0.6, -d * 0.5 - 0.02);
-      // 뒤 창
-      frontWindow(d * 0.5 + 0.012, w * 0.19, h * 0.26, h * 0.62);
-      // 앞 캐노피 — 어닝 (폴대 2개)
-      const cw = w * 0.86, cDep = Math.min(0.72, d * 0.16), slope = 0.3;
-      const cg = new T.PlaneGeometry(cw, cDep, 6, 3);
-      {
-        const p = cg.attributes.position;
-        for (let i = 0; i < p.count; i++) {
-          const u = (p.getY(i) / cDep) + 0.5;
-          p.setZ(i, -0.055 * Math.sin(u * Math.PI) - 0.03 * u);
+      winFront(0, h * 0.06, hw * 0.56, h * 0.5, hw * 0.28, meshMat, panelMat, -hd + 0.02);
+      add(new T.BoxGeometry(hw * 0.62, 0.03, 0.016), trimMat, 0, h * 0.06, -hd + 0.01).castShadow = false;
+      // 앞 미니 타프 — 위로 솟아 뻗은 천
+      const tw = w * 0.88, td = Math.min(0.8, d * 0.13), rise = 0.42;
+      const mg = new T.PlaneGeometry(tw, td, 8, 4);
+      const mp = mg.attributes.position;
+      for (let i = 0; i < mp.count; i++) {
+        const u = (mp.getX(i) / tw) + 0.5, v = (mp.getY(i) / td) + 0.5;
+        mp.setZ(i, 0.12 * Math.sin(u * Math.PI) * v * v);
+      }
+      mp.needsUpdate = true; mg.computeVertexNormals();
+      const mm = add(mg, awningMat, 0, h * 0.86 + (td * 0.5) * Math.sin(rise), -hd - (td * 0.5) * Math.cos(rise) + 0.05);
+      mm.rotation.x = -Math.PI / 2 + rise;
+      const poleH = h * 0.86 + td * Math.sin(rise);
+      [-1, 1].forEach((sx) => {
+        add(new T.CylinderGeometry(0.016, 0.02, poleH, 8), poleMat, sx * tw * 0.44, poleH / 2, -hd - td * 0.9);
+        addGuy3(grp, [[sx * tw * 0.44, poleH, -hd - td * 0.9], [sx * (tw * 0.44 + 0.45), 0.01, -hd - td * 1.6]]);
+      });
+      skirtBand(h * 0.05, trimMat, 1.006);
+      [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach((p) => {
+        addGuy3(grp, [[p[0] * hw * 0.99, h * 0.45, p[1] * (hd - 0.2)], [p[0] * (hw + 0.6), 0.01, p[1] * (hd + 0.6)]]);
+      });
+      return grp;
+    }
+
+    /* ---------- 5) 지오에어 4 — 검정 아치 셸터 (앞이 활짝 열림) ---------- */
+    if (look === 'geoair') {
+      const sec = profile({ halfW: hw, h: h, wall: 0.3, topW: 0.5, taper: 0.99, ctrl: 0.78, round: 9 });
+      loft(sec, [{ z: -hd, kx: 1, ky: 1 }, { z: 0, kx: 1, ky: 1 }, { z: hd - 0.15, kx: 0.98, ky: 0.97 }, { z: hd, kx: 0.86, ky: 0.8 }], bodyMat, false);
+      const back = add(new T.ShapeGeometry(shapeOf(sec), 1), skirtMat, 0, 0, hd - 0.16);
+      back.rotation.y = Math.PI;
+      tube(sec.map((p) => V(p.x * 1.004, p.y * 1.004, -hd + 0.004)), 0.04, bodyMat);
+      // 앞 지붕 챙(바이저)
+      const cape = sec.filter((p) => p.y > h * 0.6);
+      if (cape.length > 2) {
+        const vis = new T.BufferGeometry(), pos = [];
+        for (let i = 0; i < cape.length - 1; i++) {
+          const a = cape[i], b = cape[i + 1];
+          pos.push(a.x * 1.012, a.y * 1.012, -hd, b.x * 1.012, b.y * 1.012, -hd, b.x * 1.012, b.y * 1.002, -hd - 0.3);
+          pos.push(a.x * 1.012, a.y * 1.012, -hd, b.x * 1.012, b.y * 1.002, -hd - 0.3, a.x * 1.012, a.y * 1.002, -hd - 0.3);
         }
-        p.needsUpdate = true; cg.computeVertexNormals();
+        vis.setAttribute('position', new T.Float32BufferAttribute(pos, 3));
+        vis.computeVertexNormals();
+        add(vis, roofMat);
       }
-      const eaveY = h * wallR + 0.02;
-      const canY = eaveY - (cDep / 2) * Math.sin(slope) * 0.94;
-      const canZ = -d * 0.5 - (cDep / 2) * Math.cos(slope) * 0.97;
-      put(cg, flyMat, 0, canY, canZ, -Math.PI / 2 - slope);
-      const poleTop = eaveY - cDep * Math.sin(slope);
-      // 앞 처마에 늘어지는 발란스(차양 끝단)
-      put(new T.BoxGeometry(cw, 0.14, 0.015), flyMat, 0, poleTop - 0.07, -d * 0.5 - cDep * Math.cos(slope) * 0.96);
-      [-1, 1].forEach((sx) => {
-        put(new T.CylinderGeometry(0.021, 0.026, poleTop, 10), poleMat, sx * cw * 0.46, poleTop / 2, -d * 0.5 - cDep * Math.cos(slope) * 0.95);
-        addGuy3(grp, [[sx * cw * 0.46, poleTop, -d * 0.5 - cDep * 0.95], [sx * (cw * 0.46 + 0.42), 0.01, -d * 0.5 - cDep * 0.95 - 0.5]]);
-        // 어닝과 본체를 잇는 스트링
-        addGuy3(grp, [[sx * cw * 0.46, poleTop, -d * 0.5 - cDep * 0.9], [sx * w * 0.45, h * 0.5, -d * 0.5]]);
+      // 옆면 밝은 메쉬 (사진의 회색 메쉬 패널)
+      const lightMesh = new T.MeshStandardMaterial({
+        color: spec.mesh || '#8d958f', roughness: 0.75, metalness: 0.05,
+        side: T.DoubleSide, transparent: true, opacity: 0.92
       });
-      // 모서리 가이라인
+      [-1, 1].forEach((sx) => {
+        add(archGeo(d * 0.44, h * 0.34, 0.06), trimMat, sx * (hw + 0.004), h * 0.12, -d * 0.02).rotation.y = sx * Math.PI / 2;
+        add(archGeo(d * 0.42, h * 0.32, 0.05), lightMesh, sx * (hw + 0.010), h * 0.13, -d * 0.02).rotation.y = sx * Math.PI / 2;
+      });
+      const ph = h * 0.72;
+      [-1, 1].forEach((sx) => {
+        add(new T.CylinderGeometry(0.013, 0.016, ph, 8), poleMat, sx * hw * 0.78, ph / 2, -hd - 0.3);
+        addGuy3(grp, [[sx * hw * 0.78, ph, -hd - 0.3], [sx * hw * 0.86, 0.01, -hd - 1.0]]);
+      });
+      skirtBand(h * 0.045, skirtMat, 1.006);
       [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach((p) => {
-        addGuy3(grp, [[p[0] * w * 0.485, h * wallR * 0.92, p[1] * d * 0.49], [p[0] * (w * 0.5 + 0.5), 0.01, p[1] * (d * 0.5 + 0.5)]]);
+        addGuy3(grp, [[p[0] * hw * 0.99, h * 0.5, p[1] * hd * 0.9], [p[0] * (hw + 0.45), 0.01, p[1] * (hd + 0.5)]]);
       });
       return grp;
     }
 
-    /* ---------- 2) 지오데식 돔 (야크돔 450) ---------- */
-    if (look === 'yakdome') {
-      const wallR = 0.2;
-      domeShell(wallR, bodyMat);
-      [0, Math.PI / 3, (2 * Math.PI) / 3].forEach((th) => domeRib(wallR, th, 0.03));
-      // 스커트(바닥 자락)
-      const sk = put(new T.CylinderGeometry(1.01, 1.03, 0.16, 44, 1, true), flyMat, 0, 0.08, 0);
-      sk.scale.set(w * 0.5, 1, d * 0.5);
-      // 이음선(심) 테이프 — 어깨와 윗면
-      const domeR = (yr) => {
-        const t = (yr - wallR) / (1 - wallR);
-        if (t <= 0) return 1;
-        const a = Math.asin(Math.pow(Math.min(1, t), 1 / 1.18));
-        return Math.pow(Math.cos(a), 0.72);
-      };
-      [wallR + 0.18, wallR + 0.52].forEach((yr) => {
-        const rr = domeR(yr) * 0.998;
-        const ring = put(new T.TorusGeometry(1, 0.011, 6, 48), flyMat, 0, 0, 0);
-        ring.rotation.x = Math.PI / 2;
-        ring.scale.set(w * 0.5 * rr, d * 0.5 * rr, 1);
-        ring.position.y = h * yr;
-      });
-      // 꼭대기 환기캡
-      put(new T.CylinderGeometry(0.07, 0.1, 0.12, 12), flyMat, 0, h * 0.99, 0);
-      // 앞 현관 (베스티블) — 아치 터널
-      const pw = w * 0.26, ph = h * 0.56, pd = Math.min(0.42, d * 0.1);
-      const pg2 = porch(pw, ph, pd, 0.46);
-      pg2.translate(0, 0, -d * 0.5 - pd + 0.02);
-      put(pg2, flyMat);
-      put(archPanel(pw * 0.72, ph * 0.86, 0.5, doorMat), doorMat, 0, 0, -d * 0.5 - pd + 0.005);
-      zipper(0, 0.02, ph * 0.8, -d * 0.5 - pd - 0.005);
-      // 양쪽 작은 창
-      [[-1, -1], [1, 1]].forEach((p) => {
-        const t = 0.55;
-        put(new T.CircleGeometry(w * 0.11, 18), meshMat, p[0] * w * 0.42 * t, h * 0.3, p[1] * d * 0.42 * t).rotation.y = Math.atan2(p[0] * 0.42 * w / (w * 0.5), p[1] * 0.42 * d / (d * 0.5));
-      });
-      // 가이라인
-      [0, Math.PI / 3, (2 * Math.PI) / 3, Math.PI, Math.PI * 4 / 3, Math.PI * 5 / 3].forEach((th, i) => {
-        if (i % 2) return;
-        const x = Math.cos(th) * w * 0.5 * 1.02, z = Math.sin(th) * d * 0.5 * 1.02;
-        addGuy3(grp, [[x, h * 0.16, z], [x * 1.35, 0.01, z * 1.35]]);
-      });
-      return grp;
-    }
-
-    /* ---------- 3) 터널형 에어텐트 (위켄트립 모델V) ---------- */
-    if (look === 'modelv') {
-      const halfW = w * 0.5, wallR = 0.42;
-      const sec = sectionPts(halfW, h, wallR, 8);
-      extrudeSection(sec, d, bodyMat);
-      // 둥근 에어빔 4개
-      const nB = 4;
-      for (let i = 0; i < nB; i++) {
-        const z = -d * 0.5 + (d * (i + 0.5)) / nB;
-        tube(sec.map((p) => V(p.x * 1.012, p.y * 1.008, z)), 0.075, beamMat);
-      }
-      // 어깨 이음선
-      [-1, 1].forEach((sx) => {
-        put(new T.BoxGeometry(0.02, 0.02, d * 0.98), flyMat, sx * halfW * 0.93, h * 0.52, 0).castShadow = false;
-      });
-      // 앞·뒤 출입문
-      put(archPanel(halfW * 0.44, h * 0.6, 0.52, doorMat), doorMat, 0, 0, -d * 0.5 - 0.012);
-      zipper(0, 0.02, h * 0.58, -d * 0.5 - 0.02);
-      frontWindow(d * 0.5 + 0.012, halfW * 0.34, h * 0.16, h * 0.44);
-      // 옆면 큰 메쉬 창
-      [-1, 1].forEach((sx) => {
-        sideWindow(sx, h * 0.12, h * 0.36, -d * 0.14, d * 0.3);
-        sideWindow(sx, h * 0.12, h * 0.36, d * 0.2, d * 0.22);
-      });
-      [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach((p) => {
-        addGuy3(grp, [[p[0] * halfW * 0.99, h * 0.4, p[1] * d * 0.5], [p[0] * (halfW + 0.55), 0.01, p[1] * (d * 0.5 + 0.55)]]);
-      });
-      return grp;
-    }
-
-    /* ---------- 4) 대형 3룸 터널 (제드 티맥스 EX) ---------- */
-    if (look === 'timax') {
-      const halfW = w * 0.5, wallR = 0.45;
-      const sec = sectionPts(halfW, h, wallR, 8);
-      extrudeSection(sec, d, bodyMat);
-      // 지붕 플라이 (어두운 상단 껍질)
-      const cut = h * wallR * 0.98;
-      const upper = sec.filter((p) => p.y >= cut - 0.001);
-      const outer = upper.map((p) => ({ x: p.x * 1.022, y: p.y + 0.03 }));
-      const inner = upper.slice().reverse().map((p) => ({ x: p.x * 0.99, y: p.y + 0.05 }));
-      const fg = new T.ExtrudeGeometry(shapeOf(outer.concat(inner)), { depth: d * 0.99, bevelEnabled: false, curveSegments: 1 });
-      fg.translate(0, 0, -d * 0.99 / 2);
-      put(fg, flyMat);
-      // 아치 폴대 5개
-      for (let i = 0; i < 5; i++) {
-        const z = -d * 0.5 + (d * (i + 0.5)) / 5;
-        tube(sec.map((p) => V(p.x * 1.012, p.y * 1.008, z)), 0.033, poleMat);
-      }
-      // 앞 출입문 + 뒤 문
-      put(archPanel(halfW * 0.4, h * 0.6, 0.5, doorMat), doorMat, 0, 0, -d * 0.5 - 0.012);
-      zipper(0, 0.02, h * 0.58, -d * 0.5 - 0.02);
-      frontWindow(d * 0.5 + 0.012, halfW * 0.3, h * 0.16, h * 0.42);
-      // 옆면 창문 (룸마다)
-      [-1, 1].forEach((sx) => {
-        [-0.28, -0.02, 0.24].forEach((fz) => sideWindow(sx, h * 0.13, h * 0.37, fz * d, d * 0.19));
-      });
-      // 앞 미니 타프
-      const tw = w * 0.8, td = Math.min(0.6, d * 0.1), slope = 0.38;
-      const mini = new T.PlaneGeometry(tw, td, 4, 2);
-      { const mp = mini.attributes.position;
-        for (let i = 0; i < mp.count; i++) mp.setZ(i, -0.02 * Math.sin(((mp.getY(i) / td) + 0.5) * Math.PI));
-        mp.needsUpdate = true; mini.computeVertexNormals(); }
-      const mEave = h * wallR + 0.01;
-      put(mini, flyMat, 0, mEave - (td / 2) * Math.sin(slope), -d * 0.5 - (td / 2) * Math.cos(slope), -Math.PI / 2 - slope);
-      const mPole = mEave - td * Math.sin(slope);
-      put(new T.BoxGeometry(tw, 0.1, 0.014), flyMat, 0, mPole - 0.05, -d * 0.5 - td * Math.cos(slope));
-      [-1, 1].forEach((sx) => {
-        put(new T.CylinderGeometry(0.019, 0.023, mPole, 10), poleMat, sx * tw * 0.46, mPole / 2, -d * 0.5 - td * Math.cos(slope) * 0.97);
-        addGuy3(grp, [[sx * tw * 0.46, mPole, -d * 0.5 - td], [sx * (tw * 0.46 + 0.4), 0.01, -d * 0.5 - td * 1.4]]);
-      });
-      [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach((p) => {
-        addGuy3(grp, [[p[0] * halfW * 0.99, h * 0.42, p[1] * d * 0.5], [p[0] * (halfW + 0.6), 0.01, p[1] * (d * 0.5 + 0.6)]]);
-      });
-      return grp;
-    }
-
-    /* ---------- 5) 면 자립형 돔 (트레블첵 라움 미니) ---------- */
-    if (look === 'raum') {
-      const wallR = 0.34;
-      domeShell(wallR, bodyMat);
-      domeRib(wallR, Math.PI / 4, 0.026);
-      domeRib(wallR, -Math.PI / 4, 0.026);
-      // 그라운드시트 테두리
-      const gb = 0.055, bh = 0.07;
-      put(new T.BoxGeometry(w * 1.0, bh, gb), flyMat, 0, bh / 2, -d * 0.5);
-      put(new T.BoxGeometry(w * 1.0, bh, gb), flyMat, 0, bh / 2, d * 0.5);
-      put(new T.BoxGeometry(gb, bh, d * 1.0), flyMat, -w * 0.5, bh / 2, 0);
-      put(new T.BoxGeometry(gb, bh, d * 1.0), flyMat, w * 0.5, bh / 2, 0);
-      // 앞뒤 아치 문
-      const pw = w * 0.24, ph = h * 0.62, pd = 0.26;
-      const p1 = porch(pw, ph, pd, 0.5);
-      p1.translate(0, 0, -d * 0.5 - pd + 0.02);
-      put(p1, bodyMat);
-      put(archPanel(pw * 0.74, ph * 0.85, 0.55, doorMat), doorMat, 0, 0, -d * 0.5 - pd);
-      zipper(0, 0.02, ph * 0.8, -d * 0.5 - pd - 0.006);
-      const p2 = porch(pw, ph * 0.8, pd * 0.7, 0.5);
-      p2.translate(0, 0, d * 0.5 - 0.02);
-      put(p2, bodyMat);
-      put(archPanel(pw * 0.7, ph * 0.68, 0.55, doorMat), doorMat, 0, 0, d * 0.5 + pd * 0.7 - 0.006);
-      // 옆 창
-      [-1, 1].forEach((sx) => sideWindow(sx, h * 0.16, h * 0.4, 0, d * 0.24));
-      [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach((p) => {
-        addGuy3(grp, [[p[0] * w * 0.48, h * 0.2, p[1] * d * 0.48], [p[0] * (w * 0.5 + 0.38), 0.01, p[1] * (d * 0.5 + 0.38)]]);
-      });
-      return grp;
-    }
-
-    /* ---------- 6) 컴팩트 돔 (폴러 투맨) ---------- */
+    /* ---------- 6) 폴러 투맨 — 올리브 돔 + 주황 지퍼 ---------- */
     if (look === 'poler') {
-      const wallR = 0.12;
-      domeShell(wallR, bodyMat);
-      domeRib(wallR, 0, 0.024);
-      domeRib(wallR, Math.PI / 2, 0.024);
-      const sk = put(new T.CylinderGeometry(1.01, 1.03, 0.1, 40, 1, true), flyMat, 0, 0.05, 0);
-      sk.scale.set(w * 0.5, 1, d * 0.5);
-      // 앞 큰 둥근 출입문 (베스티블)
-      const pw = w * 0.3, ph = h * 0.66, pd = 0.24;
-      const pg3 = porch(pw, ph, pd, 0.56);
-      pg3.translate(0, 0, -d * 0.5 - pd + 0.02);
-      put(pg3, flyMat);
-      put(archPanel(pw * 0.78, ph * 0.84, 0.62, doorMat), doorMat, 0, 0, -d * 0.5 - pd);
-      zipper(0, 0.02, ph * 0.78, -d * 0.5 - pd - 0.006);
-      // 뒤 환기 창
-      frontWindow(d * 0.5 + 0.012, w * 0.12, h * 0.24, h * 0.5);
-      // 옆 둥근 창
-      [-1, 1].forEach((sx) => {
-        put(new T.CircleGeometry(h * 0.11, 16), meshMat, sx * (w * 0.5 + 0.012) * 0.93, h * 0.3, 0).rotation.y = sx * Math.PI / 2;
-      });
+      const prof = [
+        { r: 1.0, y: 0 }, { r: 1.0, y: 0.1 }, { r: 0.98, y: 0.3 },
+        { r: 0.9, y: 0.52 }, { r: 0.74, y: 0.72 }, { r: 0.48, y: 0.9 }, { r: 0, y: 1.0 }
+      ];
+      facetedDome(prof, 10, bodyMat, null);
+      // 앞 큰 메쉬 출입문 + 주황 지퍼 테
+      const dw = hw * 1.02, dh = h * 0.6;
+      add(archGeo(dw, dh, dh * 0.5), meshMat, -hw * 0.14, 0.01, -hd * 0.93);
+      const zipPts = [];
+      for (let i = 0; i <= 12; i++) {
+        const t = i / 12, ang = Math.PI * (1 - t);
+        zipPts.push(V(-hw * 0.14 + Math.cos(ang) * dw * 0.5, dh * 0.45 + Math.sin(ang) * dh * 0.55, -hd * 0.93 - 0.014));
+      }
+      tube(zipPts, 0.016, accentMat);
+      tube([V(-hw * 0.14 - dw * 0.5, dh * 0.45, -hd * 0.93 - 0.014), V(-hw * 0.14 - dw * 0.5, 0.015, -hd * 0.93 - 0.014)], 0.015, accentMat);
+      // 말아 올린 문
+      const roll = add(new T.CylinderGeometry(0.045, 0.045, dw * 0.95, 10), bodyMat, -hw * 0.14, dh * 0.94, -hd * 0.9);
+      roll.rotation.z = Math.PI / 2;
+      // 옆면 노란 세모 + 눈 로고
+      const tg = new T.Shape();
+      tg.moveTo(-0.075, -0.09); tg.lineTo(0.075, -0.09); tg.lineTo(0, 0.11); tg.closePath();
+      const logo = add(new T.ShapeGeometry(tg), new T.MeshStandardMaterial({ color: '#e8b53a', roughness: 0.85 }), hw * 0.965, h * 0.42, hd * 0.18);
+      logo.rotation.y = Math.PI / 2;
+      const eye = add(new T.CircleGeometry(0.018, 12), skirtMat, hw * 0.975, h * 0.42, hd * 0.18);
+      eye.rotation.y = Math.PI / 2;
+      // 폴대 2개(교차)
+      tube([V(-hw * 0.92, 0.02, -hd * 0.7), V(-hw * 0.9, h * 0.66, -hd * 0.02), V(-hw * 0.92, 0.02, hd * 0.7)], 0.012, poleMat);
+      tube([V(hw * 0.92, 0.02, -hd * 0.7), V(hw * 0.9, h * 0.66, -hd * 0.02), V(hw * 0.92, 0.02, hd * 0.7)], 0.012, poleMat);
+      ringSkirt(h * 0.08, skirtMat, 1.004);
       [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach((p) => {
-        addGuy3(grp, [[p[0] * w * 0.47, h * 0.22, p[1] * d * 0.47], [p[0] * (w * 0.5 + 0.3), 0.01, p[1] * (d * 0.5 + 0.3)]]);
+        addGuy3(grp, [[p[0] * hw * 0.99, h * 0.2, p[1] * hd * 0.99], [p[0] * (hw + 0.3), 0.01, p[1] * (hd + 0.35)]]);
       });
       return grp;
     }
 
-    /* ---------- 7) 에어빔 캐빈 (지오에어 4) ---------- */
-    const halfW = w * 0.5, wallR = 0.56;
-    const sec = sectionPts(halfW, h, wallR, 9);
-    extrudeSection(sec, d, bodyMat);
-    // 굵은 에어폴대 — 앞뒤 + 능선
-    [-1, 0.15, 1].forEach((fz) => {
-      const z = fz * (d * 0.5 - 0.06);
-      tube(sec.map((p) => V(p.x * 1.01, p.y * 1.008, z)), 0.085, beamMat);
-    });
-    put(new T.CylinderGeometry(0.075, 0.075, d * 0.94, 12), beamMat, 0, h * 1.0, 0).rotation.x = Math.PI / 2;
-    // 큰 메쉬 창 (옆면 넓게, 앞면 일부)
-    [-1, 1].forEach((sx) => {
-      sideWindow(sx, h * 0.14, h * 0.46, -d * 0.16, d * 0.36);
-      sideWindow(sx, h * 0.14, h * 0.46, d * 0.22, d * 0.2);
-    });
-    // 출입문 (앞) + 지퍼 + 문 테두리
-    put(archPanel(halfW * 0.46, h * 0.6, 0.55, doorMat), doorMat, 0, 0, -d * 0.5 - 0.012);
-    zipper(0, 0.02, h * 0.56, -d * 0.5 - 0.02);
-    zipper(-halfW * 0.4, 0.05, h * 0.42, -d * 0.5 - 0.02);
-    frontWindow(d * 0.5 + 0.012, halfW * 0.3, h * 0.14, h * 0.4);
+    /* ---------- 7) 트레블첵 라움 미니 — 낮은 자립형 돔 ---------- */
+    if (look === 'raum') {
+      const prof = [
+        { r: 1.0, y: 0 }, { r: 1.0, y: 0.08 }, { r: 0.99, y: 0.26 },
+        { r: 0.94, y: 0.46 }, { r: 0.84, y: 0.64 }, { r: 0.64, y: 0.82 }, { r: 0.36, y: 0.94 }, { r: 0, y: 1.0 }
+      ];
+      facetedDome(prof, 12, bodyMat, null);
+      // 플라이 — 조금 더 큰 껍질, 앞(문)은 열어 둠
+      const fpos = [], seg = 12;
+      for (let ri = 0; ri < prof.length - 1; ri++) {
+        for (let si = 0; si < seg; si++) {
+          const a0 = (si / seg) * Math.PI * 2, a1 = ((si + 1) / seg) * Math.PI * 2;
+          const mz = Math.sin((a0 + a1) / 2);
+          if (mz < -0.5) continue;
+          const R = 1.022;
+          const p00 = [Math.cos(a0) * prof[ri].r * R * hw, prof[ri].y * h + 0.012, Math.sin(a0) * prof[ri].r * R * hd];
+          const p01 = [Math.cos(a1) * prof[ri].r * R * hw, prof[ri].y * h + 0.012, Math.sin(a1) * prof[ri].r * R * hd];
+          const p10 = [Math.cos(a0) * prof[ri + 1].r * R * hw, prof[ri + 1].y * h + 0.012, Math.sin(a0) * prof[ri + 1].r * R * hd];
+          const p11 = [Math.cos(a1) * prof[ri + 1].r * R * hw, prof[ri + 1].y * h + 0.012, Math.sin(a1) * prof[ri + 1].r * R * hd];
+          [[p00, p10, p11], [p00, p11, p01]].forEach((tri3) => tri3.forEach((q) => fpos.push(q[0], q[1], q[2])));
+        }
+      }
+      const fg = new T.BufferGeometry();
+      fg.setAttribute('position', new T.Float32BufferAttribute(fpos, 3));
+      fg.computeVertexNormals();
+      add(fg, panelMat);
+      // 앞 출입문
+      winFront(0, 0.01, hw * 0.8, h * 0.5, h * 0.22, meshMat, trimMat);
+      tube([V(-hw * 0.4, 0.012, -hd - 0.014), V(0, h * 0.51, -hd - 0.014), V(hw * 0.4, 0.012, -hd - 0.014)], 0.013, trimMat);
+      // 옆 메쉬창
+      [-1, 1].forEach((sx) => {
+        winSide(sx, -d * 0.06, h * 0.16, d * 0.2, h * 0.24, h * 0.11, meshMat, trimMat);
+        winSide(sx, d * 0.24, h * 0.12, d * 0.14, h * 0.18, h * 0.09, meshMat, trimMat);
+      });
+      winBack(0, h * 0.3, hw * 0.36, h * 0.18, 0.04, meshMat, trimMat);
+      // X 폴대
+      [-1, 1].forEach((sx) => {
+        tube([V(sx * hw * 0.9, 0.02, -hd * 0.8), V(sx * hw * 0.9, h * 0.66, 0), V(sx * hw * 0.9, 0.02, hd * 0.8)], 0.012, poleMat);
+      });
+      tube([V(-hw * 0.8, 0.02, -hd * 0.9), V(0, h * 0.6, -hd * 0.92), V(hw * 0.8, 0.02, -hd * 0.9)], 0.011, poleMat);
+      ringSkirt(h * 0.06, skirtMat, 1.012);
+      [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach((p) => {
+        addGuy3(grp, [[p[0] * hw * 0.99, h * 0.22, p[1] * hd * 0.99], [p[0] * (hw + 0.32), 0.01, p[1] * (hd + 0.32)]]);
+      });
+      return grp;
+    }
+
+    /* ---------- 그 밖의 텐트: 기본 돔 ---------- */
+    const sec = profile({ halfW: hw, h: h, wall: 0.34, topW: 0.2, round: 8 });
+    loft(sec, [{ z: -hd, kx: 1, ky: 1 }, { z: 0, kx: 1, ky: 1 }, { z: hd, kx: 1, ky: 1 }], bodyMat, true);
+    skirtBand(h * 0.06, skirtMat);
+    winFront(0, 0, hw * 0.7, h * 0.5, h * 0.22);
     [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach((p) => {
-      addGuy3(grp, [[p[0] * halfW * 0.99, h * 0.5, p[1] * d * 0.5], [p[0] * (halfW + 0.6), 0.01, p[1] * (d * 0.5 + 0.6)]]);
+      addGuy3(grp, [[p[0] * hw * 0.99, h * 0.3, p[1] * hd * 0.99], [p[0] * (hw + 0.35), 0.01, p[1] * (hd + 0.35)]]);
     });
     return grp;
   }
