@@ -762,13 +762,22 @@
       const twoLine = d > fs * 3;
       const isCover = groupOf(it) === 'cover';
       if (isCover) {
-        // 텐트·타프 이름은 위쪽 가장자리에 두어 내부 배치를 가리지 않게
-        const labelY = cy - d / 2 + fs * 1.5;
-        g.fillStyle = 'rgba(255,255,255,.97)';
-        g.fillText(name, cx, labelY);
+        // 텐트·타프 이름은 본체 바깥(위쪽)에 두어 내부 배치를 전혀 가리지 않게
+        const y1 = cy + d / 2 - fs * 2.0;
+        const y2 = cy + d / 2 - fs * 1.0;
+        g.font = '600 ' + fs + 'px system-ui, "Noto Sans KR", sans-serif';
+        const tw3 = g.measureText(name).width;
         g.font = '500 ' + Math.round(fs * 0.85) + 'px system-ui, "Noto Sans KR", sans-serif';
-        g.fillStyle = 'rgba(255,255,255,.72)';
-        g.fillText(it.w + '×' + it.d, cx, labelY + fs * 1.05);
+        const tw4 = g.measureText(it.w + '×' + it.d).width;
+        const bw = Math.min(maxW + 18, Math.max(tw3, tw4) + 14);
+        g.fillStyle = 'rgba(8,12,17,.72)';
+        g.beginPath(); rrPath(g, cx - bw / 2, y1 - fs * 0.9, bw, fs * 2.25, 5); g.fill();
+        g.font = '600 ' + fs + 'px system-ui, "Noto Sans KR", sans-serif';
+        g.fillStyle = 'rgba(255,255,255,.98)';
+        g.fillText(name, cx, y1);
+        g.font = '500 ' + Math.round(fs * 0.85) + 'px system-ui, "Noto Sans KR", sans-serif';
+        g.fillStyle = 'rgba(255,255,255,.75)';
+        g.fillText(it.w + '×' + it.d, cx, y2);
         g.restore();
         return;
       }
@@ -1116,6 +1125,7 @@
   function updateSelbar() {
     const bar = $('#selbar');
     const it = getSel();
+    document.body.classList.toggle('sel-active', !!it);
     if (!it) { bar.hidden = true; return; }
     bar.hidden = false;
     $('#selColor').style.background = it.color;

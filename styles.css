@@ -383,6 +383,7 @@ dialog::backdrop{ background:rgba(3,7,11,.62); backdrop-filter:blur(3px); }
   .lib-grid{ gap:6px; }
   .card{ padding:8px; }
   .selbar{ padding:8px 10px; gap:6px; }
+  .sel-active .panel{ height:32dvh; min-height:140px; }
   .sel-actions button{ padding:7px 10px; font-size:11.5px; }
   .issues{ max-width:70%; bottom:8px; left:8px; }
   .viewbar{ top:8px; right:8px; }
