@@ -58,7 +58,7 @@
     { id: 'tent-geoair4', name: '지오에어 4', maker: '디얼스', cat: '텐트', w: 230, d: 300, hgt: 190, guy: 60, shape: 'rect', color: '#9c968c', door: 'front', memo: '에어텐트' },
     // --- 타프 ---
     { id: 'tarp-recta440', name: '렉타 타프 440', maker: '', cat: '타프', w: 440, d: 440, hgt: 0, guy: 60, shape: 'rect', color: '#bda484', door: 'none', memo: '렉타' },
-    { id: 'tarp-hexa', name: '헥사 타프 500×420', maker: '', cat: '타프', w: 500, d: 420, hgt: 0, guy: 70, shape: 'hex', color: '#55564e', door: 'none', memo: '헥사' },
+    { id: 'tarp-hexa', name: '헥사 타프 500×420', maker: '', cat: '타프', w: 500, d: 420, hgt: 0, guy: 70, shape: 'hex', color: '#6d6b5c', door: 'none', memo: '헥사' },
     // --- 가구 ---
     { id: 'furn-cot', name: '야전침대', maker: '', cat: '가구', w: 190, d: 65, hgt: 35, guy: 0, shape: 'round', color: '#8b95a5', door: 'none', memo: '' },
     { id: 'furn-table120', name: '캠핑 테이블 120', maker: '', cat: '가구', w: 120, d: 60, hgt: 45, guy: 0, shape: 'round', color: '#a98b6b', door: 'none', memo: '' },
