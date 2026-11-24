@@ -3483,7 +3483,7 @@
       const endD = Math.min(1.0, d * 0.16);
       const shellMat = fab(body, { roughness: 0.66, metalness: 0.18 });
       const seamMat = fab(tintHex(body, 0.28), { roughness: 0.7, metalness: 0.1 });
-      const sec = profile({ halfW: hw, h: h, wall: 0.5, topW: 0.56, taper: 0.99, ctrl: 0.8, round: 9 });
+      const sec = profile({ halfW: hw, h: h, wall: 0.48, topW: 0.64, taper: 0.99, ctrl: 0.86, round: 9 });
       loft(sec, [{ z: -hd + endD, kx: 1, ky: 1 }, { z: 0, kx: 1.008, ky: 1.006 }, { z: hd - endD, kx: 1, ky: 1 }], shellMat, false);
       // 앞뒤 사선 사면 — 사다리꼴로 뻗어 내려오는 컷
       apron(sec, -hd + endD, -hd, shellMat, 1.012);
@@ -3495,8 +3495,8 @@
       tube([V(0, h * 1.002, -hd + endD + 0.2), V(0, h * 1.002, hd - endD - 0.2)], 0.014, seamMat);
       // 사면 위 굵은 에어기둥 V자
       [-1, 1].forEach((sx) => {
-        tube([V(0, h * 0.99, -hd + endD + 0.01), V(sx * hw * 0.45, h * 0.58, -hd + endD * 0.42), V(sx * hw * 0.92, 0.03, -hd + 0.05)], 0.075, shellMat);
-        tube([V(0, h * 0.99, hd - endD - 0.01), V(sx * hw * 0.45, h * 0.58, hd - endD * 0.42), V(sx * hw * 0.92, 0.03, hd - 0.05)], 0.075, shellMat);
+        tube([V(0, h * 0.99, -hd + endD + 0.01), V(sx * hw * 0.45, h * 0.58, -hd + endD * 0.42), V(sx * hw * 0.92, 0.03, -hd + 0.05)], 0.06, shellMat);
+        tube([V(0, h * 0.99, hd - endD - 0.01), V(sx * hw * 0.45, h * 0.58, hd - endD * 0.42), V(sx * hw * 0.92, 0.03, hd - 0.05)], 0.06, shellMat);
       });
       // 지붕 중앙 검정 메쉬 환기창
       add(new T.PlaneGeometry(hw * 0.52, d * 0.22), meshMat, 0, h * 1.004, 0).rotation.x = -Math.PI / 2;
@@ -3523,6 +3523,10 @@
 
     /* ---------- 4) 제드 티맥스 EX — 크림색 3룸 터널 ---------- */
     if (look === 'timax') {
+      const lightWin = new T.MeshStandardMaterial({
+        color: '#b7c2cc', roughness: 0.5, metalness: 0.04, side: T.DoubleSide,
+        emissive: new T.Color('#8e9aa6'), emissiveIntensity: 0.3
+      });
       const sec = profile({ halfW: hw, h: h, wall: 0.46, topW: 0.46, taper: 0.995, ctrl: 0.66, round: 8 });
       loft(sec, [
         { z: -hd, kx: 0.9, ky: 0.86 }, { z: -hd + 0.35, kx: 0.99, ky: 0.99 },
@@ -3536,11 +3540,11 @@
       [-1, 1].forEach((sx) => {
         [-0.3, 0, 0.3].forEach((fz) => {
           const zc = fz * d, wd = d * 0.2, hh = h * 0.5;
-          winSide(sx, zc, h * 0.1, wd, hh, wd * 0.5, meshMat, panelMat);
+          winSide(sx, zc, h * 0.1, wd, hh, wd * 0.5, lightWin, panelMat);
           addGuy3(grp, [[sx * (hw + 0.012), h * 0.1, zc - wd * 0.42], [sx * (hw + 0.012), h * 0.1 + hh * 0.82, zc + wd * 0.42]]);
         });
       });
-      winFront(0, h * 0.06, hw * 0.56, h * 0.5, hw * 0.28, meshMat, panelMat, -hd + 0.02);
+      winFront(0, h * 0.06, hw * 0.56, h * 0.5, hw * 0.28, lightWin, panelMat, -hd + 0.02);
       add(new T.BoxGeometry(hw * 0.62, 0.03, 0.016), trimMat, 0, h * 0.06, -hd + 0.01).castShadow = false;
       // 앞 미니 타프 — 위로 솟아 뻗은 천
       const tw = w * 0.88, td = Math.min(0.8, d * 0.13), rise = 0.42;
@@ -3629,9 +3633,9 @@
       // 옆면 노란 세모 + 눈 로고
       const tg = new T.Shape();
       tg.moveTo(-0.075, -0.09); tg.lineTo(0.075, -0.09); tg.lineTo(0, 0.11); tg.closePath();
-      const logo = add(new T.ShapeGeometry(tg), new T.MeshStandardMaterial({ color: '#e8b53a', roughness: 0.85 }), hw * 0.965, h * 0.42, hd * 0.18);
+      const logo = add(new T.ShapeGeometry(tg), new T.MeshStandardMaterial({ color: '#e8b53a', roughness: 0.85 }), hw * 0.965, h * 0.42, -hd * 0.05);
       logo.rotation.y = Math.PI / 2;
-      const eye = add(new T.CircleGeometry(0.018, 12), skirtMat, hw * 0.975, h * 0.42, hd * 0.18);
+      const eye = add(new T.CircleGeometry(0.018, 12), skirtMat, hw * 0.975, h * 0.42, -hd * 0.05);
       eye.rotation.y = Math.PI / 2;
       // 폴대 2개(교차)
       tube([V(-hw * 0.92, 0.02, -hd * 0.7), V(-hw * 0.9, h * 0.66, -hd * 0.02), V(-hw * 0.92, 0.02, hd * 0.7)], 0.012, poleMat);
