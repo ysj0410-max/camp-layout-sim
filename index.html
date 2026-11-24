@@ -21,6 +21,11 @@
       <span class="dot"></span><span id="statusText">정상 배치</span>
     </button>
     <div class="top-actions">
+      <button id="btnQuickAdd" class="btn btn-add" type="button" title="새 장비를 cm 규격으로 등록하고 바로 배치">＋ 장비</button>
+      <div class="seg views" id="viewSeg" role="group" aria-label="2D·3D 보기 전환">
+        <button type="button" data-view="2d" class="active" title="위에서 본 2D 도면">📐 2D</button>
+        <button type="button" data-view="3d" title="입체 3D 보기">🧊 3D</button>
+      </div>
       <button id="btnPng" class="btn btn-soft" type="button" title="지금 배치를 도면 이미지(PNG)로 저장">도면 PNG</button>
       <button id="btnHelp" class="btn btn-icon" type="button" aria-label="도움말">?</button>
     </div>
@@ -30,6 +35,12 @@
     <section class="stage">
       <div class="canvas-wrap" id="canvasWrap">
         <canvas id="cv" aria-label="사이트 배치 도면"></canvas>
+        <div class="scene3d" id="scene3d" hidden></div>
+        <div class="overlay3d" id="overlay3d" hidden>
+          <button type="button" id="btn3dGhost" class="btn3d-mini" aria-pressed="false" title="텐트·타프를 반투명으로 바꿔 내부 배치를 들여다보기">🔍 투시</button>
+          <button type="button" id="btn3dReset" class="btn3d-mini" title="처음 시점으로">🎯 시점 초기화</button>
+          <span class="hint3d">드래그 회전 · 휠/핀치 확대</span>
+        </div>
         <div class="hint" id="hint">장비함에서 텐트를 탭하면<br>여기에 놓입니다</div>
         <div class="autobar"><button id="btnAuto" type="button" class="btn-auto">✨ 자동 배치</button></div>
         <div class="windbox" id="windBox">
@@ -62,6 +73,23 @@
           <button type="button" id="selEdit" class="btn-mini">이름·모양</button>
         </div>
         <div class="sel-dist" id="selDist"></div>
+        <div class="sel-label">
+          <span class="lbl">글씨</span>
+          <div class="lrot-seg" id="selLrot" role="group" aria-label="글씨 방향">
+            <button type="button" data-lrot="0" title="가로 정방향">가로</button>
+            <button type="button" data-lrot="90" title="세로(위에서 아래)">세로</button>
+            <button type="button" data-lrot="180" title="거꾸로">180°</button>
+            <button type="button" data-lrot="270" title="세로(270°)">270°</button>
+          </div>
+          <button type="button" id="selLflip" class="mini-pill" title="글씨 좌우·상하 반전">↔ 반전</button>
+          <select id="selLside" class="mini-sel" aria-label="글씨 위치">
+            <option value="c">중앙</option>
+            <option value="t">위</option>
+            <option value="b">아래</option>
+            <option value="l">왼쪽</option>
+            <option value="r">오른쪽</option>
+          </select>
+        </div>
         <div class="sel-actions">
           <button type="button" data-act="rot-15">−15°</button>
           <button type="button" data-act="rot+15">+15°</button>
@@ -89,9 +117,9 @@
               <button id="btnAddVeh" class="btn btn-primary" type="button">배치</button>
             </div>
           </div>
-          <div class="pane-top">
-            <button id="btnNewGear" class="btn btn-primary" type="button">＋ 내 장비 cm로 등록</button>
-            <span class="muted tiny">이름·가로·세로(cm)만 넣으면 끝. 카드를 탭하면 사이트에 놓입니다.</span>
+          <div class="pane-top sticky">
+            <button id="btnNewGear" class="btn btn-primary wide-add" type="button">＋ 장비 추가 <small>내 장비 cm로 등록</small></button>
+            <span class="muted tiny">이름·가로·세로(cm)만 넣으면 끝. 등록하면 바로 사이트에 놓입니다.</span>
           </div>
           <div id="libList" class="lib-list"></div>
         </section>
@@ -168,15 +196,21 @@
       <label class="field"><span>세로 (cm)</span><input id="gD" type="number" inputmode="numeric" min="10" max="2000" required></label>
       <label class="field"><span>높이 (cm)</span><input id="gH" type="number" inputmode="numeric" min="0" max="400" placeholder="선택"></label>
       <label class="field"><span>가이라인 여유 (cm)</span><input id="gGuy" type="number" inputmode="numeric" min="0" max="300" placeholder="0"></label>
-      <label class="field"><span>모양</span><select id="gShape"></select></label>
       <label class="field"><span>출입문 방향</span><select id="gDoor"></select></label>
-      <label class="field"><span>색상</span><input id="gColor" type="color"></label>
-      <label class="field"><span>메모</span><input id="gMemo" type="text" maxlength="24" placeholder="예: 돔형, 에어텐트"></label>
+      <select id="gShape" hidden aria-hidden="true"></select>
+      <label class="field"><span>색상</span><input id="gColor" type="color" value="#7aa7d9"></label>
+      <label class="field"><span>메모 (모양 힌트)</span><input id="gMemo" type="text" maxlength="24" placeholder="예: 돔형, 터널형, 에어텐트"></label>
     </div>
-    <p class="muted tiny">가이라인 여유는 팩을 박는 공간입니다. 도면에 점선으로 표시되고, 겹침 경고는 도면의 본체 외곽 기준입니다.</p>
+    <h3 class="mini-title">카테고리</h3>
+    <div class="chip-pick" id="gCatChips"></div>
+    <h3 class="mini-title">모양</h3>
+    <div class="chip-pick" id="gShapeChips"></div>
+    <div class="gear-preview"><canvas id="gearPreview" width="560" height="180" aria-label="장비 모양 미리보기"></canvas><span>이렇게 그려집니다</span></div>
+    <p class="muted tiny gear-note">가이라인 여유는 팩을 박는 공간입니다. 도면에 점선으로 표시되고, 겹침 경고는 도면의 본체 외곽 기준입니다.</p>
     <div class="dlg-actions">
-      <button type="button" id="gDelete" class="btn danger">장비함에서 삭제</button>
+      <label class="switch mini-switch"><input type="checkbox" id="gPlace" checked><span>바로 놓기</span></label>
       <span class="grow"></span>
+      <button type="button" id="gDelete" class="btn danger">장비함에서 삭제</button>
       <button type="button" class="btn" data-close>취소</button>
       <button type="submit" class="btn btn-primary">저장</button>
     </div>
@@ -194,9 +228,23 @@
       <label class="field"><span>가로 (cm)</span><input id="iW" type="number" inputmode="numeric" min="10" max="3000" required></label>
       <label class="field"><span>세로 (cm)</span><input id="iD" type="number" inputmode="numeric" min="10" max="3000" required></label>
       <label class="field"><span>가이라인 여유 (cm)</span><input id="iGuy" type="number" inputmode="numeric" min="0" max="400"></label>
-      <label class="field"><span>색상</span><input id="iColor" type="color"></label>
+      <label class="field"><span>색상</span><input type="color" id="iColor"></label>
       <label class="field"><span>모양</span><select id="iShape"></select></label>
-      <label class="field"><span> </span><span class="muted tiny" style="padding-top:8px">바꾸면 도면에 바로 반영됩니다</span></label>
+    </div>
+    <h3 class="mini-title">글씨 방향·위치</h3>
+    <div class="grid2">
+      <label class="field"><span>글씨 방향</span><select id="iLrot">
+        <option value="0">가로 (0°)</option><option value="90">세로 (90°)</option>
+        <option value="180">거꾸로 (180°)</option><option value="270">세로 (270°)</option>
+      </select></label>
+      <label class="field"><span>글씨 위치</span><select id="iLside">
+        <option value="c">중앙</option><option value="t">위</option><option value="b">아래</option>
+        <option value="l">왼쪽</option><option value="r">오른쪽</option>
+      </select></label>
+      <label class="field"><span>반전</span><select id="iLflip">
+        <option value="n">없음</option><option value="h">좌우 반전</option><option value="v">상하 반전</option>
+      </select></label>
+      <div class="field"><span>빠른 전환</span><div class="mini-row"><button type="button" id="iLrotToggle" class="mini-pill">↔ 가로/세로</button><button type="button" id="iLrotFlip" class="mini-pill">⇵ 180°</button></div></div>
     </div>
     <label class="switch" style="margin-top:8px"><input type="checkbox" id="iSyncLib" checked><span>장비함에도 같은 규격으로 저장</span></label>
     <div class="dlg-actions">
@@ -224,7 +272,9 @@
       <li><b>💨 바람</b> — 캔버스 오른쪽 아래 <b>💨</b>로 켜고 끄고, <b>⟲ ⟳</b>로 방향을 45°씩 돌립니다. 화로대·난로를 놓으면 바람이 불어가는 쪽으로 연기가 그려집니다.</li>
       <li><b>자동 배치</b> — 위 <b>✨ 자동 배치</b>를 누르면 차량은 아래쪽 주차 구역에, 가장 큰 텐트·타프는 남은 공간에, 침대·테이블·카고박스는 텐트 안쪽에 자동으로 정리됩니다. 그 뒤에 손으로 옮기거나 돌려서 다듬으면 됩니다.</li>
       <li><b>차량</b> — 장비함 위 <b>🚗 차량 배치</b>에서 차종(코나·레이·아반떼·스포티지/투싼·쏘렌토/싼타페·토레스·팰리세이드·카니발·스타리아)을 고르면 전장×전폭이 자동으로 들어갑니다. 코나는 <b>아이언맨 스타일</b>(다크그레이·레드·골드), 레이는 <b>블랙</b>으로 그려집니다. 배치한 차는 가로·세로(cm)로 직접 고칠 수도 있습니다.</li>
-      <li><b>새 장비</b> — 장비함의 <b>＋ 내 장비 cm로 등록</b>에서 어떤 캠핑용품이든 이름과 가로·세로(cm)를 직접 넣어 추가할 수 있습니다.</li>
+      <li><b>새 장비</b> — 위쪽 <b>＋ 장비</b>(또는 장비함 맨 위 <b>＋ 장비 추가</b>)에서 카테고리·모양을 고르고 이름과 가로·세로(cm), 가이라인, 색상을 넣으면 바로 사이트에 놓입니다. 미리보기로 어떻게 그려질지 먼저 확인할 수 있습니다.</li>
+      <li><b>글씨 방향</b> — 장비를 선택하면 <b>글씨 가로/세로/180°/270°</b>와 <b>↔ 반전</b>, <b>위치(중앙·위·아래·왼쪽·오른쪽)</b>를 바꿀 수 있습니다. 바꾼 방향은 배치안 저장·도면 PNG에도 그대로 나옵니다.</li>
+      <li><b>🧊 3D 보기</b> — 위쪽 <b>📐 2D / 🧊 3D</b>로 오갑니다. 3D에서는 실제 높이로 세운 텐트·차량·가구를 드래그로 360° 돌려 보고 휠·핀치로 확대합니다. 기본은 실제 외부 모습이고, <b>🔍 투시</b>를 누르면 텐트 속 침대·테이블까지 들여다봅니다.</li>
       <li><b>저장</b> — 배치안 탭에서 이름을 붙여 여러 개 저장하고 다시 불러올 수 있습니다. <b>도면 PNG</b>로 그림 파일도 받을 수 있습니다.</li>
     </ul>
     <p class="muted tiny">PC 단축키: <b>Delete</b> 삭제 · <b>Ctrl+D</b> 복제 · <b>R</b> 90° 회전 · <b>←→↑↓</b> 10cm 이동</p>
