@@ -760,6 +760,18 @@
       while (name.length > 2 && g.measureText(name).width > maxW) name = name.slice(0, -1);
       if (name !== it.name) name = name.slice(0, -1) + '…';
       const twoLine = d > fs * 3;
+      const isCover = groupOf(it) === 'cover';
+      if (isCover) {
+        // 텐트·타프 이름은 위쪽 가장자리에 두어 내부 배치를 가리지 않게
+        const labelY = cy - d / 2 + fs * 1.5;
+        g.fillStyle = 'rgba(255,255,255,.97)';
+        g.fillText(name, cx, labelY);
+        g.font = '500 ' + Math.round(fs * 0.85) + 'px system-ui, "Noto Sans KR", sans-serif';
+        g.fillStyle = 'rgba(255,255,255,.72)';
+        g.fillText(it.w + '×' + it.d, cx, labelY + fs * 1.05);
+        g.restore();
+        return;
+      }
       if (isVeh) {
         const tw2 = Math.min(maxW, g.measureText(name).width + 14);
         g.fillStyle = 'rgba(6,9,13,.66)';
