@@ -2081,6 +2081,7 @@
       get library() { return S.library; },
       get issues() { return lastIssues; },
       get selected() { return getSel(); },
+      get view() { return view; },
       addFromLib: addFromLib,
       autoArrange: autoArrange,
       addVehicle: addVehicleFromModel,
