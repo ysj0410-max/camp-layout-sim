@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#0a0f15">
+<meta name="description" content="캠핑 사이트 크기와 가진 장비(텐트·타프·테이블·의자·야전침대)를 넣고, 겹침과 가이라인 여유까지 확인하며 배치를 미리 그려보는 시뮬레이터.">
+<title>캠프 배치 · 캠핑 사이트 장비 배치 시뮬레이터</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0f15'/%3E%3Cpath d='M12 48 32 14l20 34z' fill='%23f5a24b'/%3E%3Cpath d='M24 48 32 30l8 18z' fill='%230a0f15'/%3E%3C/svg%3E">
+</head>
+<body>
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">🏕️</span>
+      <span class="titles"><b>캠프 배치</b><small>사이트·장비 배치 시뮬레이터</small></span>
+    </div>
+    <button class="status ok" id="status" type="button" title="배치 상태 상세 보기">
+      <span class="dot"></span><span id="statusText">정상 배치</span>
+    </button>
+    <div class="top-actions">
+      <button id="btnPng" class="btn btn-soft" type="button" title="지금 배치를 도면 이미지(PNG)로 저장">도면 PNG</button>
+      <button id="btnHelp" class="btn btn-icon" type="button" aria-label="도움말">?</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="stage">
+      <div class="canvas-wrap" id="canvasWrap">
+        <canvas id="cv" aria-label="사이트 배치 도면"></canvas>
+        <div class="hint" id="hint">장비함에서 텐트를 탭하면<br>여기에 놓입니다</div>
+        <div class="autobar"><button id="btnAuto" type="button" class="btn-auto">✨ 자동 배치</button></div>
+        <div class="windbox" id="windBox">
+          <button class="wind-toggle on" id="windToggle" type="button" title="바람 표시 켜기/끄기" aria-pressed="true">💨</button>
+          <button class="wind-rot" type="button" data-wind="-45" aria-label="바람 방향 45도 반시계">⟲</button>
+          <span class="wind-deg"><i id="windArrow"></i><b id="windDeg">90° 동</b></span>
+          <button class="wind-rot" type="button" data-wind="45" aria-label="바람 방향 45도 시계">⟳</button>
+        </div>
+        <div class="viewbar" role="group" aria-label="확대 축소">
+          <button id="btnZoomOut" type="button" aria-label="축소">−</button>
+          <span id="zoomLabel">100%</span>
+          <button id="btnZoomIn" type="button" aria-label="확대">＋</button>
+          <button id="btnFit" type="button" class="fit">맞춤</button>
+        </div>
+        <div class="issues" id="issues" hidden></div>
+      </div>
+
+      <div class="selbar" id="selbar" hidden>
+        <div class="sel-head">
+          <span class="swatch" id="selColor"></span>
+          <b id="selName">장비</b>
+          <span class="muted" id="selSize"></span>
+          <span class="grow"></span>
+          <button class="btn-x" id="selClose" type="button" aria-label="선택 해제">✕</button>
+        </div>
+        <div class="sel-size">
+          <label>가로<input id="selW" type="number" inputmode="numeric" step="1" min="10"></label>
+          <label>세로<input id="selD" type="number" inputmode="numeric" step="1" min="10"></label>
+          <label>가이<input id="selG" type="number" inputmode="numeric" step="1" min="0"></label>
+          <button type="button" id="selEdit" class="btn-mini">이름·모양</button>
+        </div>
+        <div class="sel-dist" id="selDist"></div>
+        <div class="sel-actions">
+          <button type="button" data-act="rot-15">−15°</button>
+          <button type="button" data-act="rot+15">+15°</button>
+          <button type="button" data-act="rot90">+90°</button>
+          <button type="button" data-act="rot0">0°</button>
+          <button type="button" data-act="dup">복제</button>
+          <button type="button" data-act="del" class="danger">삭제</button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <nav class="tabs" id="tabs">
+        <button type="button" data-tab="gear" class="active">장비함</button>
+        <button type="button" data-tab="site">사이트</button>
+        <button type="button" data-tab="plan">배치안</button>
+      </nav>
+
+      <div class="tabpanes">
+        <section class="pane active" id="pane-gear">
+          <div class="veh-box">
+            <div class="veh-head"><span>🚗 차량 배치</span><em>차종을 고르면 전장×전폭이 자동 적용</em></div>
+            <div class="field-row">
+              <select id="vehModel" class="text" aria-label="차종 선택"></select>
+              <button id="btnAddVeh" class="btn btn-primary" type="button">배치</button>
+            </div>
+          </div>
+          <div class="pane-top">
+            <button id="btnNewGear" class="btn btn-primary" type="button">＋ 내 장비 cm로 등록</button>
+            <span class="muted tiny">이름·가로·세로(cm)만 넣으면 끝. 카드를 탭하면 사이트에 놓입니다.</span>
+          </div>
+          <div id="libList" class="lib-list"></div>
+        </section>
+
+        <section class="pane" id="pane-site">
+          <h3>사이트 크기</h3>
+          <div class="field-row">
+            <label class="field"><span>가로</span><input id="siteW" type="number" inputmode="decimal" min="1" step="1"></label>
+            <label class="field"><span>세로</span><input id="siteD" type="number" inputmode="decimal" min="1" step="1"></label>
+            <div class="seg" id="unitSeg">
+              <button type="button" data-unit="cm" class="active">cm</button>
+              <button type="button" data-unit="m">m</button>
+            </div>
+          </div>
+          <p class="area-note" id="areaNote">5.0 × 7.0m · 35.0㎡</p>
+          <div class="chips" id="presets"></div>
+
+          <h3>바닥 재질</h3>
+          <div class="seg wide" id="floorSeg">
+            <button type="button" data-floor="deck" class="active">데크</button>
+            <button type="button" data-floor="gravel">파쇄석</button>
+            <button type="button" data-floor="grass">잔디</button>
+          </div>
+
+          <h3>격자 눈금</h3>
+          <div class="seg wide" id="gridSeg">
+            <button type="button" data-grid="off">없음</button>
+            <button type="button" data-grid="m1" class="active">1m</button>
+            <button type="button" data-grid="m05">50cm</button>
+          </div>
+
+          <h3>배치 옵션</h3>
+          <label class="switch"><input type="checkbox" id="optSnap" checked><span>10cm 단위 스냅</span></label>
+          <label class="switch"><input type="checkbox" id="optGuy" checked><span>가이라인 여유폭 점선 표시</span></label>
+
+          <h3>데이터</h3>
+          <div class="btn-row">
+            <button id="btnExportJson" class="btn" type="button">JSON 내보내기</button>
+            <button id="btnImportJson" class="btn" type="button">JSON 불러오기</button>
+            <input id="fileJson" type="file" accept="application/json,.json" hidden>
+          </div>
+          <div class="btn-row">
+            <button id="btnClear" class="btn" type="button">사이트 비우기</button>
+            <button id="btnResetLib" class="btn" type="button">기본 장비함 복원</button>
+          </div>
+          <p class="muted tiny note">배치·장비함·배치안은 이 기기 브라우저에 자동 저장됩니다. 기기를 바꾸려면 JSON으로 내보내 옮기세요.</p>
+        </section>
+
+        <section class="pane" id="pane-plan">
+          <h3>지금 배치 저장</h3>
+          <div class="field-row">
+            <input id="planName" class="text" type="text" maxlength="40" placeholder="배치안 이름 (예: 12월 노지)">
+            <button id="btnSavePlan" class="btn btn-primary" type="button">저장</button>
+          </div>
+          <h3>저장한 배치안</h3>
+          <div class="plan-list" id="planList"></div>
+          <button id="btnPng2" class="btn btn-soft wide" type="button">도면 PNG 내려받기</button>
+          <p class="muted tiny note">배치안을 불러오면 지금 사이트와 장비 배치가 그 배치안으로 바뀝니다. 사이트 설정도 함께 복원됩니다.</p>
+        </section>
+      </div>
+    </aside>
+  </main>
+</div>
+
+<!-- 장비 등록/수정 -->
+<dialog id="gearDlg" class="dlg">
+  <form id="gearForm" method="dialog">
+    <h2 id="gearTitle">장비 등록</h2>
+    <div class="grid2">
+      <label class="field" id="gModelWrap" hidden><span>차종 선택</span><select id="gModel"></select></label>
+      <label class="field"><span>이름</span><input id="gName" type="text" maxlength="30" required placeholder="예: 야크돔 450"></label>
+      <label class="field"><span>카테고리</span><select id="gCat"></select></label>
+      <label class="field"><span>가로 (cm)</span><input id="gW" type="number" inputmode="numeric" min="10" max="2000" required></label>
+      <label class="field"><span>세로 (cm)</span><input id="gD" type="number" inputmode="numeric" min="10" max="2000" required></label>
+      <label class="field"><span>높이 (cm)</span><input id="gH" type="number" inputmode="numeric" min="0" max="400" placeholder="선택"></label>
+      <label class="field"><span>가이라인 여유 (cm)</span><input id="gGuy" type="number" inputmode="numeric" min="0" max="300" placeholder="0"></label>
+      <label class="field"><span>모양</span><select id="gShape"></select></label>
+      <label class="field"><span>출입문 방향</span><select id="gDoor"></select></label>
+      <label class="field"><span>색상</span><input id="gColor" type="color"></label>
+      <label class="field"><span>메모</span><input id="gMemo" type="text" maxlength="24" placeholder="예: 돔형, 에어텐트"></label>
+    </div>
+    <p class="muted tiny">가이라인 여유는 팩을 박는 공간입니다. 도면에 점선으로 표시되고, 겹침 경고는 도면의 본체 외곽 기준입니다.</p>
+    <div class="dlg-actions">
+      <button type="button" id="gDelete" class="btn danger">장비함에서 삭제</button>
+      <span class="grow"></span>
+      <button type="button" class="btn" data-close>취소</button>
+      <button type="submit" class="btn btn-primary">저장</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- 놓인 장비 수정 -->
+<dialog id="itemDlg" class="dlg">
+  <form id="itemForm" method="dialog">
+    <h2>놓인 장비 수정</h2>
+    <div class="grid2">
+      <label class="field" id="iModelWrap" hidden><span>차종 선택</span><select id="iModel"></select></label>
+      <label class="field"><span>이름</span><input id="iName" type="text" maxlength="30" required></label>
+      <label class="field"><span>출입문 방향</span><select id="iDoor"></select></label>
+      <label class="field"><span>가로 (cm)</span><input id="iW" type="number" inputmode="numeric" min="10" max="3000" required></label>
+      <label class="field"><span>세로 (cm)</span><input id="iD" type="number" inputmode="numeric" min="10" max="3000" required></label>
+      <label class="field"><span>가이라인 여유 (cm)</span><input id="iGuy" type="number" inputmode="numeric" min="0" max="400"></label>
+      <label class="field"><span>색상</span><input id="iColor" type="color"></label>
+      <label class="field"><span>모양</span><select id="iShape"></select></label>
+      <label class="field"><span> </span><span class="muted tiny" style="padding-top:8px">바꾸면 도면에 바로 반영됩니다</span></label>
+    </div>
+    <label class="switch" style="margin-top:8px"><input type="checkbox" id="iSyncLib" checked><span>장비함에도 같은 규격으로 저장</span></label>
+    <div class="dlg-actions">
+      <span class="grow"></span>
+      <button type="button" class="btn" data-close>취소</button>
+      <button type="submit" class="btn btn-primary">적용</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- 도움말 -->
+<dialog id="helpDlg" class="dlg">
+  <div class="help">
+    <h2>이렇게 씁니다</h2>
+    <ul>
+      <li><b>장비 놓기</b> — 장비함에서 카드를 탭하면 사이트 가운데 빈 곳에 놓입니다.</li>
+      <li><b>옮기기</b> — 장비를 손가락(마우스)으로 끌면 이동. 격자 스냅이 켜져 있으면 10cm 단위로 맞춰집니다.</li>
+      <li><b>돌리기</b> — 장비를 선택하면 위쪽에 <b>↻ 손잡이</b>가 생깁니다. 그 손잡이를 끌면 회전. 아래 <b>−15° / +15° / +90° / 0°</b> 버튼으로도 돌릴 수 있습니다.</li>
+      <li><b>화면</b> — 빈 곳을 끌면 화면 이동, 두 손가락으로 벌리면 확대·축소. 마우스 휠도 확대·축소.</li>
+      <li><b>경고</b> — 본체가 사이트 밖으로 나가면 빨간 테두리. 아래 경우는 빨간 겹침 경고와 위쪽 <b>이탈·겹침 N건</b> 표시: <b>텐트↔텐트, 가구·수납·화기끼리, 차량이 끼는 겹침</b>.</li>
+      <li><b>텐트 안 배치</b> — 텐트·타프는 항상 바닥에 깔리고 가구·용품이 그 위에 그려집니다. 텐트 안에 야전침대·테이블·카고박스를 놓는 것은 <b>내부 배치</b>라 경고하지 않습니다.</li>
+      <li><b>남은 거리</b> — 장비를 선택하면 위·아래·좌·우 벽까지 남은 거리가 cm로 나옵니다.</li>
+      <li><b>크기 직접 수정</b> — 장비를 선택하면 아래에 <b>가로·세로·가이(cm)</b> 입력칸이 나옵니다. 숫자를 바꾸면 그 자리에서 크기가 적용됩니다. <b>이름·모양</b>을 누르면 이름·모양·출입문·색상까지 고칠 수 있고, <b>장비함에도 같은 규격 저장</b>을 체크하면 장비함 카드도 함께 바뀝니다.</li>
+      <li><b>🌳 장애물</b> — 장비함 <b>장애물</b>에서 <b>나무 기둥</b>·<b>전기 배전함</b>을 올려 사이트에 원래 있는 것을 표시해 두세요. 다른 장비와 겹치면 경고가 뜨고, 자동 배치는 이 자리를 비켜서 정리합니다.</li>
+      <li><b>💨 바람</b> — 캔버스 오른쪽 아래 <b>💨</b>로 켜고 끄고, <b>⟲ ⟳</b>로 방향을 45°씩 돌립니다. 화로대·난로를 놓으면 바람이 불어가는 쪽으로 연기가 그려집니다.</li>
+      <li><b>자동 배치</b> — 위 <b>✨ 자동 배치</b>를 누르면 차량은 아래쪽 주차 구역에, 가장 큰 텐트·타프는 남은 공간에, 침대·테이블·카고박스는 텐트 안쪽에 자동으로 정리됩니다. 그 뒤에 손으로 옮기거나 돌려서 다듬으면 됩니다.</li>
+      <li><b>차량</b> — 장비함 위 <b>🚗 차량 배치</b>에서 차종(코나·레이·아반떼·스포티지/투싼·쏘렌토/싼타페·토레스·팰리세이드·카니발·스타리아)을 고르면 전장×전폭이 자동으로 들어갑니다. 코나는 <b>아이언맨 스타일</b>(다크그레이·레드·골드), 레이는 <b>블랙</b>으로 그려집니다. 배치한 차는 가로·세로(cm)로 직접 고칠 수도 있습니다.</li>
+      <li><b>새 장비</b> — 장비함의 <b>＋ 내 장비 cm로 등록</b>에서 어떤 캠핑용품이든 이름과 가로·세로(cm)를 직접 넣어 추가할 수 있습니다.</li>
+      <li><b>저장</b> — 배치안 탭에서 이름을 붙여 여러 개 저장하고 다시 불러올 수 있습니다. <b>도면 PNG</b>로 그림 파일도 받을 수 있습니다.</li>
+    </ul>
+    <p class="muted tiny">PC 단축키: <b>Delete</b> 삭제 · <b>Ctrl+D</b> 복제 · <b>R</b> 90° 회전 · <b>←→↑↓</b> 10cm 이동</p>
+    <div class="dlg-actions"><span class="grow"></span><button type="button" class="btn btn-primary" data-close>알겠습니다</button></div>
+  </div>
+</dialog>
+
+<!-- 확인 -->
+<dialog id="askDlg" class="dlg small">
+  <div class="ask">
+    <p id="askText"></p>
+    <div class="dlg-actions">
+      <span class="grow"></span>
+      <button type="button" class="btn" id="askNo">취소</button>
+      <button type="button" class="btn btn-primary" id="askYes">확인</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>
