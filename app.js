@@ -53,7 +53,7 @@
     { id: 'tent-modelv', name: '위켄트립 모델V', maker: '', cat: '텐트', w: 350, d: 625, hgt: 225, guy: 80, shape: 'rect', color: '#26292e', door: 'front', memo: '터널형' },
     { id: 'tent-timaxex', name: '제드 티맥스 EX', maker: '', cat: '텐트', w: 400, d: 680, hgt: 225, guy: 100, shape: 'rect', color: '#ded7c9', door: 'front', memo: '대형 터널형' },
     { id: 'tent-raummini', name: '트레블첵 라움 미니', maker: '', cat: '텐트', w: 200, d: 260, hgt: 130, guy: 40, shape: 'rect', color: '#eba92e', door: 'front', memo: '아치 캐빈 돔' },
-    { id: 'tent-poler2', name: '폴러 투맨', maker: '', cat: '텐트', w: 152, d: 216, hgt: 102, guy: 40, shape: 'rect', color: '#67714f', door: 'front', memo: '경량 돔' },
+    { id: 'tent-poler2', name: '폴러 투맨', maker: '', cat: '텐트', w: 152, d: 216, hgt: 102, guy: 40, shape: 'rect', color: '#f6f2e7', door: 'front', memo: '레인브로' },
     { id: 'tent-village5', name: '네이처하이크 빌리지 5.0', maker: '', cat: '텐트', w: 210, d: 470, hgt: 190, guy: 60, shape: 'rect', color: '#c2a273', door: 'front', memo: '로지형' },
     { id: 'tent-geoair4', name: '지오에어 4', maker: '디얼스', cat: '텐트', w: 230, d: 300, hgt: 190, guy: 60, shape: 'rect', color: '#22252a', door: 'front', memo: '에어텐트' },
     // --- 타프 ---
@@ -723,7 +723,7 @@
     modelv: { body: '#26292e', panel: '#2c3036', roof: '#202328', trim: '#111317', skirt: '#0e1013', pole: '#121417', mesh: '#0b0d10' },
     timax: { body: '#ded7c9', panel: '#e7e1d5', roof: '#ded7c9', trim: '#8d8797', skirt: '#6f6b7a', pole: '#3a3d42', mesh: '#1d2126' },
     raum: { body: '#eba92e', panel: '#d9971f', roof: '#e6a52b', trim: '#1b1d20', skirt: '#1b1d20', pole: '#c9d2da', mesh: '#231a12', door: '#6e4726' },
-    poler: { body: '#67714f', panel: '#727c58', roof: '#67714f', trim: '#22251f', skirt: '#16181a', pole: '#3b3f36', mesh: '#1a1d18', accent: '#e2622a' },
+    poler: { body: '#f6f2e7', panel: '#efeade', roof: '#f6f2e7', trim: '#3a3d40', skirt: '#3a3d40', pole: '#4a4e52', mesh: '#2b2d2a', accent: '#e86227' },
     geoair: { body: '#22252a', panel: '#2a2e34', roof: '#1b1e22', trim: '#0e1013', skirt: '#0c0e11', pole: '#3a3f45', mesh: '#8d958f' }
   };
   function tentLookOf(it) {
@@ -744,19 +744,19 @@
   }
 
   /* 이전 기본 팔레트(민트·보라 등)로 저장된 텐트·타프 색을 실제 제품색으로 옮깁니다. */
-  const PALETTE_V = 4;
-  /* v2 기본색(제품색 1차) → v3 실제 사진에서 뽑은 색 → v4 라움 미니 머스타드 */
+  const PALETTE_V = 5;
+  /* v2 기본색(제품색 1차) → v3 실제 사진색 → v4 라움 머스타드 → v5 폴러 레인브로. 여러 옛 기본색을 배열로 둡니다. */
   const OLD_TENT_COLORS = {
-    'tent-yakdome450': '#ab8557', 'tent-modelv': '#d2c7b2', 'tent-timaxex': '#ded6c5',
-    'tent-raummini': '#d3a3a0', 'tent-poler2': '#c96a3f', 'tent-village5': '#d6c7ab',
-    'tent-geoair4': '#9c968c'
+    'tent-yakdome450': ['#ab8557'], 'tent-modelv': ['#d2c7b2'], 'tent-timaxex': ['#ded6c5'],
+    'tent-raummini': ['#d3a3a0'], 'tent-poler2': ['#c96a3f', '#67714f', '#5f6b47', '#5e6a46', '#727c58'],
+    'tent-village5': ['#d6c7ab'], 'tent-geoair4': ['#9c968c']
   };
   function migratePalette(list) {
     (list || []).forEach((e) => {
       const key = OLD_TENT_COLORS[e.id] ? e.id : (e.libId || '');
-      const old = OLD_TENT_COLORS[key];
-      if (!old) return;
-      if (String(e.color || '').toLowerCase() === old) {
+      const olds = OLD_TENT_COLORS[key];
+      if (!olds) return;
+      if (olds.indexOf(String(e.color || '').toLowerCase()) >= 0) {
         const d = DEFAULT_LIBRARY.find((x) => x.id === key);
         if (d) e.color = d.color;
       }
@@ -1082,21 +1082,75 @@
       g.strokeStyle = withA(spec.body, 0.9); g.lineWidth = mid;
       g.beginPath(); g.ellipse(0, hd * 0.88, hw * 0.9, Math.max(2, d * 0.045), 0, 0, Math.PI); g.stroke();
     } else if (look === 'poler') {
-      // 올리브 컴팩트 돔 — X 폴대, 주황 지퍼 문
-      ring(hw * 0.99, hd * 0.99, withA(body, 0.9), mid * 1.3);
-      [-1, 1].forEach((s) => line(s * hw * 0.98, -hd * 0.86, s * hw * 0.98, hd * 0.86, poleC, mid));
+      // 레인브로 — 흰 바탕 멀티컬러 문양 + 회색 폴대 슬리브 2줄 + 지붕 타원 눈 창 + 주황 삼각 로고
+      const pal2 = ['#d8342a', '#2c5aa0', '#3f8f4a', '#e86227', '#2f9c95', '#e9c33a', '#d9578a', '#1f8a8f'];
+      g.beginPath(); g.ellipse(0, 0, hw * 0.99, hd * 0.99, 0, 0, TAU);
+      g.fillStyle = 'rgba(248,245,238,.94)'; g.fill();
+      g.save();
+      g.beginPath(); g.ellipse(0, 0, hw * 0.97, hd * 0.97, 0, 0, TAU); g.clip();
+      // 문양 — 작은 꽃·잎·마름모를 성기게 (흰 바탕이 넉넉히 보이게)
+      const nx = Math.max(3, Math.round(w / 30)), ny = Math.max(4, Math.round(d / 30));
+      const cell = Math.min(w / nx, d / ny);
+      for (let iy = 0; iy < ny; iy++) {
+        for (let ix = 0; ix < nx; ix++) {
+          const px = (ix + 0.5 + (iy % 2 ? 0.3 : 0)) * (w / nx) - hw;
+          const py = (iy + 0.5) * (d / ny) - hd;
+          const rr2 = cell * (0.19 + ((ix * 7 + iy * 3) % 4) * 0.035);
+          const col = pal2[(ix * 3 + iy * 5) % pal2.length];
+          const col2 = pal2[(ix * 5 + iy * 3 + 2) % pal2.length];
+          const kind = (ix * 3 + iy * 7) % 4;
+          if (kind === 0) {
+            // 꽃 — 꽃잎 5장
+            for (let p2 = 0; p2 < 5; p2++) {
+              const a2 = (p2 / 5) * TAU + ix;
+              g.beginPath();
+              g.ellipse(px + Math.cos(a2) * rr2 * 0.55, py + Math.sin(a2) * rr2 * 0.55, rr2 * 0.46, rr2 * 0.28, a2, 0, TAU);
+              g.fillStyle = withA(col, 0.72); g.fill();
+            }
+            g.beginPath(); g.arc(px, py, rr2 * 0.2, 0, TAU);
+            g.fillStyle = withA(col2, 0.8); g.fill();
+          } else if (kind === 1) {
+            g.beginPath(); g.ellipse(px, py, rr2 * 0.95, rr2 * 0.34, (ix + iy) * 0.8, 0, TAU);
+            g.fillStyle = withA(col, 0.72); g.fill();
+            g.beginPath(); g.ellipse(px + rr2 * 0.7, py + rr2 * 0.5, rr2 * 0.8, rr2 * 0.3, (ix - iy) * 0.9, 0, TAU);
+            g.fillStyle = withA(col2, 0.7); g.fill();
+          } else if (kind === 2) {
+            g.beginPath();
+            g.moveTo(px, py - rr2 * 0.8); g.lineTo(px + rr2 * 0.62, py); g.lineTo(px, py + rr2 * 0.8); g.lineTo(px - rr2 * 0.62, py);
+            g.closePath(); g.fillStyle = withA(col, 0.72); g.fill();
+          } else {
+            g.beginPath(); g.arc(px, py, rr2 * 0.55, 0, TAU);
+            g.fillStyle = withA(col, 0.72); g.fill();
+            g.beginPath(); g.arc(px + rr2 * 0.85, py - rr2 * 0.6, rr2 * 0.22, 0, TAU);
+            g.fillStyle = withA(col2, 0.7); g.fill();
+          }
+        }
+      }
+      g.restore();
+      ring(hw * 0.99, hd * 0.99, withA(body, 0.95), mid * 1.5);
+      // 진회색 폴대 슬리브 2줄 (앞면에서 지붕으로)
+      [-1, 1].forEach((s) => {
+        line(s * hw * 0.13, -hd * 0.90, s * hw * 0.30, hd * 0.98, withA(spec.pole, 0.95), mid * 1.5);
+      });
       line(0, -hd * 0.99, 0, hd * 0.99, poleC, mid * 0.9);
+      // 지붕 타원 눈 창
+      g.beginPath(); g.ellipse(-hw * 0.34, -hd * 0.42, hw * 0.24, hd * 0.11, -0.5, 0, TAU);
+      g.fillStyle = 'rgba(140,147,152,.95)'; g.fill();
+      g.strokeStyle = 'rgba(92,99,103,.95)'; g.lineWidth = thin; g.stroke();
       // 앞 문 + 주황 지퍼
-      g.beginPath(); g.ellipse(-hw * 0.14, -hd * 0.74, w * 0.3, d * 0.16, 0, 0, TAU);
-      g.fillStyle = meshC; g.fill();
-      g.strokeStyle = withA(spec.accent || '#e2622a', 0.95); g.lineWidth = mid * 1.4; g.stroke();
-      // 옆 로고
+      g.beginPath(); g.ellipse(-hw * 0.10, -hd * 0.885, w * 0.18, d * 0.052, 0, 0, TAU);
+      g.fillStyle = withA(spec.mesh || '#2b2d2a', 0.9); g.fill();
+      g.strokeStyle = withA(spec.accent || '#e86227', 0.98); g.lineWidth = mid * 1.5; g.stroke();
+      // 옆면 주황 삼각 눈 로고
+      const tx = hw * 0.90, ty2 = -d * 0.02, ts = Math.min(w, d) * 0.16;
       g.beginPath();
-      g.moveTo(hw * 0.86, hd * 0.16); g.lineTo(hw * 0.86, hd * 0.3); g.lineTo(hw * 0.86, hd * 0.23);
-      g.fillStyle = '#e8b53a';
-      g.beginPath(); g.arc(hw * 0.84, hd * 0.24, Math.max(1.6, Math.min(w, d) * 0.05), 0, TAU); g.fill();
-      // 뒤 환기
-      meshWin(0, hd * 0.86, w * 0.28, Math.max(2.2, d * 0.05), 4);
+      g.moveTo(tx, ty2 - ts * 0.55); g.lineTo(tx, ty2 + ts * 0.55); g.lineTo(tx - ts * 0.8, ty2); g.closePath();
+      g.fillStyle = withA(spec.accent || '#e86227', 0.98); g.fill();
+      g.beginPath(); g.arc(tx - ts * 0.22, ty2, ts * 0.16, 0, TAU);
+      g.strokeStyle = '#2b2d2a'; g.lineWidth = thin; g.stroke();
+      // 다크그레이 바닥 자락
+      g.strokeStyle = withA(spec.skirt || '#3a3d40', 0.95); g.lineWidth = mid * 1.8;
+      g.beginPath(); g.ellipse(0, 0, hw * 0.985, hd * 0.985, 0, 0, TAU); g.stroke();
     } else {
       // 라움 미니 — 머스타드 아치 캐빈 돔 (실제 사진의 앞뒤 큰 문·지붕 벤틸·바깥 X 폴대)
       const skirtC = withA(spec.skirt || '#1b1d20', 0.95);
@@ -1736,7 +1790,8 @@
       g.stroke();
     }
 
-    if (it.door !== 'none' && kind !== 'vehicle' && w > 22 && d > 14) drawDoor(g, it, w, d, lw);
+    // 텐트는 제품별 실제 문 모양을 이미 그리므로 공통 문 표시는 덧그리지 않습니다
+    if (it.door !== 'none' && kind !== 'vehicle' && groupOf(it) !== 'cover' && w > 22 && d > 14) drawDoor(g, it, w, d, lw);
     if (kind.indexOf('tent') === 0 && w > 34 && d > 34) drawTentAwning2(g, it, w, d, lw);
     g.restore();
 
@@ -3253,6 +3308,66 @@
     return cur;
   }
 
+  /* 폴러 투맨 레인브로 — 흰 바탕에 알록달록한 민속 문양(꽃·잎·원·마름모) 패턴 텍스처 */
+  let rainbroTex = null;
+  function rainbroTexture() {
+    if (rainbroTex) return rainbroTex;
+    const THREE = V3.THREE;
+    const c = document.createElement('canvas');
+    c.width = c.height = 512;
+    const g = c.getContext('2d');
+    g.fillStyle = '#f6f2e7';
+    g.fillRect(0, 0, 512, 512);
+    const pal = ['#d8342a', '#2c5aa0', '#3f8f4a', '#e86227', '#2f9c95', '#e9c33a', '#d9578a', '#f07f2c', '#1f8a8f', '#7d3f8f', '#2b6f3f'];
+    let seed = 20261125;
+    const rnd = () => { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; };
+    const pick = () => pal[Math.floor(rnd() * pal.length)];
+    const flower = (x, y, r, col) => {
+      const n = 5 + Math.floor(rnd() * 2);
+      for (let i = 0; i < n; i++) {
+        const a = (i / n) * Math.PI * 2 + rnd() * 0.25;
+        g.beginPath();
+        g.ellipse(x + Math.cos(a) * r * 0.55, y + Math.sin(a) * r * 0.55, r * 0.44, r * 0.26, a, 0, Math.PI * 2);
+        g.fillStyle = col; g.fill();
+      }
+      g.beginPath(); g.arc(x, y, r * 0.27, 0, Math.PI * 2); g.fillStyle = '#f8f5ee'; g.fill();
+      g.beginPath(); g.arc(x, y, r * 0.13, 0, Math.PI * 2); g.fillStyle = pick(); g.fill();
+    };
+    const leaf = (x, y, r, col, a) => {
+      g.save(); g.translate(x, y); g.rotate(a);
+      g.beginPath(); g.ellipse(0, 0, r * 0.92, r * 0.33, 0, 0, Math.PI * 2);
+      g.fillStyle = col; g.fill();
+      g.restore();
+    };
+    const diamond = (x, y, r, col) => {
+      g.beginPath(); g.moveTo(x, y - r); g.lineTo(x + r * 0.78, y); g.lineTo(x, y + r); g.lineTo(x - r * 0.78, y); g.closePath();
+      g.fillStyle = col; g.fill();
+    };
+    const dot = (x, y, r, col) => { g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fillStyle = col; g.fill(); };
+    const half = (x, y, r, col) => { g.beginPath(); g.arc(x, y, r, 0, Math.PI); g.closePath(); g.fillStyle = col; g.fill(); };
+    for (let gy = 0; gy < 9; gy++) {
+      for (let gx = 0; gx < 9; gx++) {
+        const x = gx * 60 + (gy % 2) * 30 + (rnd() - 0.5) * 8;
+        const y = gy * 60 + (rnd() - 0.5) * 8;
+        const k = rnd();
+        if (k < 0.34) flower(x, y, 16 + rnd() * 7, pick());
+        else if (k < 0.56) { leaf(x, y, 17, pick(), rnd() * Math.PI); leaf(x + 4, y + 3, 17, pick(), rnd() * Math.PI); }
+        else if (k < 0.72) diamond(x, y, 12 + rnd() * 6, pick());
+        else if (k < 0.86) half(x, y, 10 + rnd() * 5, pick());
+        else dot(x, y, 6 + rnd() * 4, pick());
+        if (rnd() < 0.65) dot(x + 25, y - 23, 2.4 + rnd() * 2.4, pick());
+        if (rnd() < 0.45) leaf(x - 24, y + 22, 12, pick(), rnd() * Math.PI);
+      }
+    }
+    const tex = new THREE.CanvasTexture(c);
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+    tex.repeat.set(3.0, 3.0);
+    tex.anisotropy = 4;
+    if (THREE.SRGBColorSpace) tex.colorSpace = THREE.SRGBColorSpace;
+    rainbroTex = tex;
+    return tex;
+  }
+
   /* ==================== 3D 텐트 — 실제 제품 사진 그대로 ==================== */
   /* tmp/tent_refs 의 제품 사진과 유수정 님의 실제 피칭 사진을 보고
      실루엣·지붕/벽 각도·창문·어닝·폴대를 텐트마다 따로 만듭니다. */
@@ -3425,7 +3540,7 @@
     };
     // 원형 단면 돔 껍질 (각진 면)
     const facetedDome = (prof, seg, mat, colFn) => {
-      const pos = [], col = [];
+      const pos = [], col = [], uvs = [];
       const cA = new T.Color(body), cB = new T.Color(spec.panel || tintHex(body, 0.16));
       const PR = smoothProf(prof, 2);
       const SEG = Math.max(32, Math.round(seg * 3));
@@ -3438,14 +3553,18 @@
         }
         pC.push(row);
       }
+      const VV = (ri) => ri / Math.max(1, PR.length - 1);
       for (let ri = 0; ri < PR.length - 1; ri++) {
         for (let si = 0; si < SEG; si++) {
           const p00 = pC[ri][si], p01 = pC[ri][si + 1];
           const p10 = pC[ri + 1][si], p11 = pC[ri + 1][si + 1];
           const c = colFn ? colFn(ri, si, PR[ri].y, si / SEG) : null;
-          [[p00, p10, p11], [p00, p11, p01]].forEach((tri3) => {
-            tri3.forEach((q) => {
+          const u0 = si / SEG, u1 = (si + 1) / SEG, v0 = VV(ri), v1 = VV(ri + 1);
+          const uv3 = [[[u0, v0], [u0, v1], [u1, v1]], [[u0, v0], [u1, v1], [u1, v0]]];
+          [[p00, p10, p11], [p00, p11, p01]].forEach((tri3, ti) => {
+            tri3.forEach((q, qi) => {
               pos.push(q[0], q[1], q[2]);
+              uvs.push(uv3[ti][qi][0], uv3[ti][qi][1]);
               if (c) col.push(c.r, c.g, c.b);
             });
           });
@@ -3453,6 +3572,7 @@
       }
       const g = new T.BufferGeometry();
       g.setAttribute('position', new T.Float32BufferAttribute(pos, 3));
+      g.setAttribute('uv', new T.Float32BufferAttribute(uvs, 2));
       if (col.length) g.setAttribute('color', new T.Float32BufferAttribute(col, 3));
       smoothGeo(g);
       const m2 = col.length
@@ -3716,15 +3836,84 @@
       return grp;
     }
 
-    /* ---------- 6) 폴러 투맨 — 올리브 돔 + 주황 지퍼 ---------- */
+    /* ---------- 6) 폴러 투맨 — 레인브로(흰 바탕 멀티컬러 문양) 돔 ---------- */
+    /* 실제 제품 사진: 흰 천에 꽃·잎·원·마름모 문양, 진회색 폴대 슬리브 2줄,
+       지붕 쪽 회색 타원 눈 창, 옆면 주황 삼각 눈 로고, 다크그레이 바닥 */
     if (look === 'poler') {
       const prof = [
         { r: 1.0, y: 0 }, { r: 1.0, y: 0.1 }, { r: 0.98, y: 0.3 },
         { r: 0.9, y: 0.52 }, { r: 0.74, y: 0.72 }, { r: 0.48, y: 0.9 }, { r: 0, y: 1.0 }
       ];
-      facetedDome(prof, 10, bodyMat, null);
+      const cloth = new T.MeshStandardMaterial({
+        map: rainbroTexture(), color: new T.Color(body), roughness: 0.92, metalness: 0.0,
+        side: T.DoubleSide, flatShading: false
+      });
+      facetedDome(prof, 10, cloth, null);
+      const sleeveMat = fab(spec.pole || '#4a4e52', { roughness: 0.6, metalness: 0.12 });
+      const darkMat = fab(spec.skirt || '#3a3d40', { roughness: 0.82 });
+      // 단면 높이·기울기 (표면에 창을 붙일 때)
+      const profY = (r) => {
+        for (let i = 0; i < prof.length - 1; i++) {
+          if (r <= prof[i].r && r >= prof[i + 1].r) {
+            const t = (prof[i].r - r) / Math.max(1e-6, prof[i].r - prof[i + 1].r);
+            return prof[i].y + (prof[i + 1].y - prof[i].y) * t;
+          }
+        }
+        return 0;
+      };
+      const profD = (r) => {
+        for (let i = 0; i < prof.length - 1; i++) {
+          if (r <= prof[i].r && r >= prof[i + 1].r) {
+            return (prof[i + 1].y - prof[i].y) / Math.max(1e-6, prof[i + 1].r - prof[i].r);
+          }
+        }
+        return 0;
+      };
+      // 돔 표면에 붙는 판(타원 창·삼각 로고)
+      const onDome = (cx, cz, rx, ry, mat, lift) => {
+        const th = Math.atan2(cz, cx);
+        const r = Math.min(1, Math.max(0.02, Math.hypot(cx, cz)));
+        const y = profY(r), d = profD(r);
+        const P = new T.Vector3(Math.cos(th) * r * hw, y * h, Math.sin(th) * r * hd);
+        const tr = new T.Vector3(Math.cos(th) * hw, d * h, Math.sin(th) * hd);
+        const tt = new T.Vector3(-Math.sin(th) * r * hw, 0, Math.cos(th) * r * hd);
+        const Nv = new T.Vector3().crossVectors(tt, tr).normalize();
+        const radial = new T.Vector3(Math.cos(th) * hw, 0, Math.sin(th) * hd);
+        if (Nv.dot(radial) < 0 || Nv.y < 0) Nv.negate();
+        const k = lift == null ? 0.012 : lift;
+        const m = add(new T.CircleGeometry(1, 26), mat, P.x + Nv.x * k, P.y + Nv.y * k, P.z + Nv.z * k);
+        m.scale.set(rx, ry, 1);
+        m.lookAt(P.x + Nv.x, P.y + Nv.y, P.z + Nv.z);
+        m.castShadow = false;
+        return m;
+      };
+      const eyeMat = new T.MeshStandardMaterial({
+        color: '#a7aeb2', roughness: 0.3, metalness: 0.2, side: T.DoubleSide,
+        transparent: true, opacity: 0.95, emissive: new T.Color('#5c6367'), emissiveIntensity: 0.25
+      });
+      const eyeRimMat = fab('#4f5659', { roughness: 0.62 });
+      // 지붕 쪽 타원 눈 모양 창 (앞 왼쪽 · 뒤 오른쪽)
+      [[-0.42, -0.50], [0.42, 0.50]].forEach((e) => {
+        onDome(e[0], e[1], 0.145, 0.072, eyeRimMat, 0.020);
+        onDome(e[0], e[1], 0.125, 0.058, eyeMat, 0.030);
+      });
+      // 진회색 폴대 슬리브 2줄 — 지붕에서 앞면으로 내려옴
+      [-1, 1].forEach((sx) => {
+        const pts = [];
+        for (let i = 0; i <= 10; i++) {
+          const t = i / 10;
+          const xu = 0.10 + 0.26 * Math.pow(t, 1.45);
+          const zu = -(0.06 + 0.88 * Math.pow(t, 1.1));
+          const ru = Math.min(0.995, Math.hypot(xu, zu));
+          pts.push(V(sx * xu * hw * 1.008, Math.max(0.02, profY(ru) + 0.012) * h, zu * hd * 1.008));
+        }
+        tube(pts, 0.024, sleeveMat);
+        // 슬리브 끝 웨빙 · 주황/레드 폴대 끝
+        add(new T.BoxGeometry(0.05, 0.03, 0.05), darkMat, sx * hw * 0.36, 0.028, -hd * 0.93).castShadow = false;
+        add(new T.CylinderGeometry(0.019, 0.019, 0.045, 14), accentMat, sx * hw * 0.36, 0.02, -hd * 0.955).castShadow = false;
+      });
       // 앞 큰 메쉬 출입문 + 주황 지퍼 테
-      const dw = hw * 1.02, dh = h * 0.6;
+      const dw = hw * 0.86, dh = h * 0.5;
       add(archGeo(dw, dh, dh * 0.5), meshMat, -hw * 0.14, 0.01, -hd * 0.93);
       const zipPts = [];
       for (let i = 0; i <= 12; i++) {
@@ -3734,21 +3923,25 @@
       tube(zipPts, 0.016, accentMat);
       tube([V(-hw * 0.14 - dw * 0.5, dh * 0.45, -hd * 0.93 - 0.014), V(-hw * 0.14 - dw * 0.5, 0.015, -hd * 0.93 - 0.014)], 0.015, accentMat);
       // 말아 올린 문
-      const roll = add(new T.CylinderGeometry(0.045, 0.045, dw * 0.95, 20), bodyMat, -hw * 0.14, dh * 0.94, -hd * 0.9);
+      const roll = add(new T.CylinderGeometry(0.045, 0.045, dw * 0.95, 20), cloth, -hw * 0.14, dh * 0.94, -hd * 0.9);
       roll.rotation.z = Math.PI / 2;
-      // 옆면 노란 세모 + 눈 로고
+      // 옆면 주황 삼각 눈 로고 패널
       const tg = new T.Shape();
-      tg.moveTo(-0.075, -0.09); tg.lineTo(0.075, -0.09); tg.lineTo(0, 0.11); tg.closePath();
-      const logo = add(new T.ShapeGeometry(tg), new T.MeshStandardMaterial({ color: '#e8b53a', roughness: 0.85 }), hw * 0.965, h * 0.42, -hd * 0.05);
+      tg.moveTo(-0.115, -0.13); tg.lineTo(0.115, -0.13); tg.lineTo(0, 0.16); tg.closePath();
+      const logo = add(new T.ShapeGeometry(tg), accentMat, hw * 0.955, h * 0.44, -hd * 0.06);
       logo.rotation.y = Math.PI / 2;
-      const eye = add(new T.CircleGeometry(0.018, 12), skirtMat, hw * 0.975, h * 0.42, -hd * 0.05);
+      const eye = add(new T.RingGeometry(0.021, 0.03, 22), new T.MeshStandardMaterial({ color: '#2b2d2a', roughness: 0.7, side: T.DoubleSide }), hw * 0.968, h * 0.44, -hd * 0.06);
       eye.rotation.y = Math.PI / 2;
-      // 폴대 2개(교차)
-      tube([V(-hw * 0.92, 0.02, -hd * 0.7), V(-hw * 0.9, h * 0.66, -hd * 0.02), V(-hw * 0.92, 0.02, hd * 0.7)], 0.012, poleMat);
-      tube([V(hw * 0.92, 0.02, -hd * 0.7), V(hw * 0.9, h * 0.66, -hd * 0.02), V(hw * 0.92, 0.02, hd * 0.7)], 0.012, poleMat);
-      ringSkirt(h * 0.08, skirtMat, 1.004);
+      const eyeDot = add(new T.CircleGeometry(0.009, 16), new T.MeshStandardMaterial({ color: '#2b2d2a', roughness: 0.7, side: T.DoubleSide }), hw * 0.968, h * 0.44, -hd * 0.06);
+      eyeDot.rotation.y = Math.PI / 2;
+      // 양옆 진회색 폴대(내부 프레임) — 슬리브 라인
+      tube([V(-hw * 0.92, 0.02, -hd * 0.7), V(-hw * 0.9, h * 0.66, -hd * 0.02), V(-hw * 0.92, 0.02, hd * 0.7)], 0.012, sleeveMat);
+      tube([V(hw * 0.92, 0.02, -hd * 0.7), V(hw * 0.9, h * 0.66, -hd * 0.02), V(hw * 0.92, 0.02, hd * 0.7)], 0.012, sleeveMat);
+      // 다크그레이 바닥 자락 + 모서리 폴대 끝(주황)
+      ringSkirt(h * 0.085, darkMat, 1.006);
       [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach((p) => {
-        addGuy3(grp, [[p[0] * hw * 0.99, h * 0.2, p[1] * hd * 0.99], [p[0] * (hw + 0.3), 0.01, p[1] * (hd + 0.35)]]);
+        add(new T.CylinderGeometry(0.018, 0.018, 0.05, 14), accentMat, p[0] * hw * 0.9, 0.025, p[1] * hd * 0.68).castShadow = false;
+        addGuy3(grp, [[p[0] * hw * 0.99, h * 0.2, p[1] * hd * 0.99], [p[0] * (hw + 0.3), 0.01, p[1] * (hd + 0.35)]], '#d2564a');
       });
       return grp;
     }
