@@ -3884,10 +3884,10 @@
         ms.castShadow = false;
         return ms;
       };
-      roofQuad(-0.40, 0.40, 0.105, 0.315, 0.006, meshMat);
-      roofQuad(-0.46, 0.46, 0.040, 0.150, 0.030, trimMat, 0.006);
-      roofQuad(0.40, -0.40, 0.685, 0.895, 0.006, meshMat);
-      roofQuad(0.46, -0.46, 0.850, 0.960, 0.030, trimMat, 0.006);
+      roofQuad(-0.38, 0.38, 0.115, 0.330, 0.006, meshMat);
+      roofQuad(-0.40, 0.40, 0.070, 0.175, 0.026, trimMat, 0.005);
+      roofQuad(0.38, -0.38, 0.670, 0.885, 0.006, meshMat);
+      roofQuad(0.40, -0.40, 0.825, 0.930, 0.026, trimMat, 0.005);
       // 실버 X 폴대 2줄 — 바닥 모서리에서 지붕 반대편 모서리로, 몸체 밖으로 살짝 떠서
       const poleR = 0.0115;
       [-1, 1].forEach((sx) => {
